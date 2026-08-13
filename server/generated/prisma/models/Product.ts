@@ -29,6 +29,7 @@ export type AggregateProduct = {
 export type ProductAvgAggregateOutputType = {
   price: number | null
   originalPrice: number | null
+  flashdeal: number | null
   stock: number | null
   rating: number | null
   reviewCount: number | null
@@ -37,6 +38,7 @@ export type ProductAvgAggregateOutputType = {
 export type ProductSumAggregateOutputType = {
   price: number | null
   originalPrice: number | null
+  flashdeal: number | null
   stock: number | null
   rating: number | null
   reviewCount: number | null
@@ -50,9 +52,8 @@ export type ProductMinAggregateOutputType = {
   originalPrice: number | null
   image: string | null
   category: string | null
-  unit: string | null
+  flashdeal: number | null
   stock: number | null
-  isOrganic: boolean | null
   rating: number | null
   reviewCount: number | null
   createdAt: Date | null
@@ -67,9 +68,8 @@ export type ProductMaxAggregateOutputType = {
   originalPrice: number | null
   image: string | null
   category: string | null
-  unit: string | null
+  flashdeal: number | null
   stock: number | null
-  isOrganic: boolean | null
   rating: number | null
   reviewCount: number | null
   createdAt: Date | null
@@ -84,9 +84,8 @@ export type ProductCountAggregateOutputType = {
   originalPrice: number
   image: number
   category: number
-  unit: number
+  flashdeal: number
   stock: number
-  isOrganic: number
   rating: number
   reviewCount: number
   createdAt: number
@@ -98,6 +97,7 @@ export type ProductCountAggregateOutputType = {
 export type ProductAvgAggregateInputType = {
   price?: true
   originalPrice?: true
+  flashdeal?: true
   stock?: true
   rating?: true
   reviewCount?: true
@@ -106,6 +106,7 @@ export type ProductAvgAggregateInputType = {
 export type ProductSumAggregateInputType = {
   price?: true
   originalPrice?: true
+  flashdeal?: true
   stock?: true
   rating?: true
   reviewCount?: true
@@ -119,9 +120,8 @@ export type ProductMinAggregateInputType = {
   originalPrice?: true
   image?: true
   category?: true
-  unit?: true
+  flashdeal?: true
   stock?: true
-  isOrganic?: true
   rating?: true
   reviewCount?: true
   createdAt?: true
@@ -136,9 +136,8 @@ export type ProductMaxAggregateInputType = {
   originalPrice?: true
   image?: true
   category?: true
-  unit?: true
+  flashdeal?: true
   stock?: true
-  isOrganic?: true
   rating?: true
   reviewCount?: true
   createdAt?: true
@@ -153,9 +152,8 @@ export type ProductCountAggregateInputType = {
   originalPrice?: true
   image?: true
   category?: true
-  unit?: true
+  flashdeal?: true
   stock?: true
-  isOrganic?: true
   rating?: true
   reviewCount?: true
   createdAt?: true
@@ -257,9 +255,8 @@ export type ProductGroupByOutputType = {
   originalPrice: number | null
   image: string
   category: string
-  unit: string | null
+  flashdeal: number | null
   stock: number | null
-  isOrganic: boolean | null
   rating: number | null
   reviewCount: number | null
   createdAt: Date
@@ -297,9 +294,8 @@ export type ProductWhereInput = {
   originalPrice?: Prisma.FloatNullableFilter<"Product"> | number | null
   image?: Prisma.StringFilter<"Product"> | string
   category?: Prisma.StringFilter<"Product"> | string
-  unit?: Prisma.StringNullableFilter<"Product"> | string | null
+  flashdeal?: Prisma.IntNullableFilter<"Product"> | number | null
   stock?: Prisma.IntNullableFilter<"Product"> | number | null
-  isOrganic?: Prisma.BoolNullableFilter<"Product"> | boolean | null
   rating?: Prisma.FloatNullableFilter<"Product"> | number | null
   reviewCount?: Prisma.IntNullableFilter<"Product"> | number | null
   createdAt?: Prisma.DateTimeFilter<"Product"> | Date | string
@@ -314,9 +310,8 @@ export type ProductOrderByWithRelationInput = {
   originalPrice?: Prisma.SortOrderInput | Prisma.SortOrder
   image?: Prisma.SortOrder
   category?: Prisma.SortOrder
-  unit?: Prisma.SortOrderInput | Prisma.SortOrder
+  flashdeal?: Prisma.SortOrderInput | Prisma.SortOrder
   stock?: Prisma.SortOrderInput | Prisma.SortOrder
-  isOrganic?: Prisma.SortOrderInput | Prisma.SortOrder
   rating?: Prisma.SortOrderInput | Prisma.SortOrder
   reviewCount?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -334,9 +329,8 @@ export type ProductWhereUniqueInput = Prisma.AtLeast<{
   originalPrice?: Prisma.FloatNullableFilter<"Product"> | number | null
   image?: Prisma.StringFilter<"Product"> | string
   category?: Prisma.StringFilter<"Product"> | string
-  unit?: Prisma.StringNullableFilter<"Product"> | string | null
+  flashdeal?: Prisma.IntNullableFilter<"Product"> | number | null
   stock?: Prisma.IntNullableFilter<"Product"> | number | null
-  isOrganic?: Prisma.BoolNullableFilter<"Product"> | boolean | null
   rating?: Prisma.FloatNullableFilter<"Product"> | number | null
   reviewCount?: Prisma.IntNullableFilter<"Product"> | number | null
   createdAt?: Prisma.DateTimeFilter<"Product"> | Date | string
@@ -351,9 +345,8 @@ export type ProductOrderByWithAggregationInput = {
   originalPrice?: Prisma.SortOrderInput | Prisma.SortOrder
   image?: Prisma.SortOrder
   category?: Prisma.SortOrder
-  unit?: Prisma.SortOrderInput | Prisma.SortOrder
+  flashdeal?: Prisma.SortOrderInput | Prisma.SortOrder
   stock?: Prisma.SortOrderInput | Prisma.SortOrder
-  isOrganic?: Prisma.SortOrderInput | Prisma.SortOrder
   rating?: Prisma.SortOrderInput | Prisma.SortOrder
   reviewCount?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -376,9 +369,8 @@ export type ProductScalarWhereWithAggregatesInput = {
   originalPrice?: Prisma.FloatNullableWithAggregatesFilter<"Product"> | number | null
   image?: Prisma.StringWithAggregatesFilter<"Product"> | string
   category?: Prisma.StringWithAggregatesFilter<"Product"> | string
-  unit?: Prisma.StringNullableWithAggregatesFilter<"Product"> | string | null
+  flashdeal?: Prisma.IntNullableWithAggregatesFilter<"Product"> | number | null
   stock?: Prisma.IntNullableWithAggregatesFilter<"Product"> | number | null
-  isOrganic?: Prisma.BoolNullableWithAggregatesFilter<"Product"> | boolean | null
   rating?: Prisma.FloatNullableWithAggregatesFilter<"Product"> | number | null
   reviewCount?: Prisma.IntNullableWithAggregatesFilter<"Product"> | number | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Product"> | Date | string
@@ -393,9 +385,8 @@ export type ProductCreateInput = {
   originalPrice?: number | null
   image: string
   category: string
-  unit?: string | null
+  flashdeal?: number | null
   stock?: number | null
-  isOrganic?: boolean | null
   rating?: number | null
   reviewCount?: number | null
   createdAt?: Date | string
@@ -410,9 +401,8 @@ export type ProductUncheckedCreateInput = {
   originalPrice?: number | null
   image: string
   category: string
-  unit?: string | null
+  flashdeal?: number | null
   stock?: number | null
-  isOrganic?: boolean | null
   rating?: number | null
   reviewCount?: number | null
   createdAt?: Date | string
@@ -427,9 +417,8 @@ export type ProductUpdateInput = {
   originalPrice?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   image?: Prisma.StringFieldUpdateOperationsInput | string
   category?: Prisma.StringFieldUpdateOperationsInput | string
-  unit?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  flashdeal?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   stock?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  isOrganic?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   rating?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   reviewCount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -444,9 +433,8 @@ export type ProductUncheckedUpdateInput = {
   originalPrice?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   image?: Prisma.StringFieldUpdateOperationsInput | string
   category?: Prisma.StringFieldUpdateOperationsInput | string
-  unit?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  flashdeal?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   stock?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  isOrganic?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   rating?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   reviewCount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -461,9 +449,8 @@ export type ProductCreateManyInput = {
   originalPrice?: number | null
   image: string
   category: string
-  unit?: string | null
+  flashdeal?: number | null
   stock?: number | null
-  isOrganic?: boolean | null
   rating?: number | null
   reviewCount?: number | null
   createdAt?: Date | string
@@ -478,9 +465,8 @@ export type ProductUpdateManyMutationInput = {
   originalPrice?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   image?: Prisma.StringFieldUpdateOperationsInput | string
   category?: Prisma.StringFieldUpdateOperationsInput | string
-  unit?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  flashdeal?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   stock?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  isOrganic?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   rating?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   reviewCount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -495,9 +481,8 @@ export type ProductUncheckedUpdateManyInput = {
   originalPrice?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   image?: Prisma.StringFieldUpdateOperationsInput | string
   category?: Prisma.StringFieldUpdateOperationsInput | string
-  unit?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  flashdeal?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   stock?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  isOrganic?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   rating?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   reviewCount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -512,9 +497,8 @@ export type ProductCountOrderByAggregateInput = {
   originalPrice?: Prisma.SortOrder
   image?: Prisma.SortOrder
   category?: Prisma.SortOrder
-  unit?: Prisma.SortOrder
+  flashdeal?: Prisma.SortOrder
   stock?: Prisma.SortOrder
-  isOrganic?: Prisma.SortOrder
   rating?: Prisma.SortOrder
   reviewCount?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -524,6 +508,7 @@ export type ProductCountOrderByAggregateInput = {
 export type ProductAvgOrderByAggregateInput = {
   price?: Prisma.SortOrder
   originalPrice?: Prisma.SortOrder
+  flashdeal?: Prisma.SortOrder
   stock?: Prisma.SortOrder
   rating?: Prisma.SortOrder
   reviewCount?: Prisma.SortOrder
@@ -537,9 +522,8 @@ export type ProductMaxOrderByAggregateInput = {
   originalPrice?: Prisma.SortOrder
   image?: Prisma.SortOrder
   category?: Prisma.SortOrder
-  unit?: Prisma.SortOrder
+  flashdeal?: Prisma.SortOrder
   stock?: Prisma.SortOrder
-  isOrganic?: Prisma.SortOrder
   rating?: Prisma.SortOrder
   reviewCount?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -554,9 +538,8 @@ export type ProductMinOrderByAggregateInput = {
   originalPrice?: Prisma.SortOrder
   image?: Prisma.SortOrder
   category?: Prisma.SortOrder
-  unit?: Prisma.SortOrder
+  flashdeal?: Prisma.SortOrder
   stock?: Prisma.SortOrder
-  isOrganic?: Prisma.SortOrder
   rating?: Prisma.SortOrder
   reviewCount?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -566,6 +549,7 @@ export type ProductMinOrderByAggregateInput = {
 export type ProductSumOrderByAggregateInput = {
   price?: Prisma.SortOrder
   originalPrice?: Prisma.SortOrder
+  flashdeal?: Prisma.SortOrder
   stock?: Prisma.SortOrder
   rating?: Prisma.SortOrder
   reviewCount?: Prisma.SortOrder
@@ -587,10 +571,6 @@ export type NullableIntFieldUpdateOperationsInput = {
   divide?: number
 }
 
-export type NullableBoolFieldUpdateOperationsInput = {
-  set?: boolean | null
-}
-
 
 
 export type ProductSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -601,9 +581,8 @@ export type ProductSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   originalPrice?: boolean
   image?: boolean
   category?: boolean
-  unit?: boolean
+  flashdeal?: boolean
   stock?: boolean
-  isOrganic?: boolean
   rating?: boolean
   reviewCount?: boolean
   createdAt?: boolean
@@ -618,9 +597,8 @@ export type ProductSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   originalPrice?: boolean
   image?: boolean
   category?: boolean
-  unit?: boolean
+  flashdeal?: boolean
   stock?: boolean
-  isOrganic?: boolean
   rating?: boolean
   reviewCount?: boolean
   createdAt?: boolean
@@ -635,9 +613,8 @@ export type ProductSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   originalPrice?: boolean
   image?: boolean
   category?: boolean
-  unit?: boolean
+  flashdeal?: boolean
   stock?: boolean
-  isOrganic?: boolean
   rating?: boolean
   reviewCount?: boolean
   createdAt?: boolean
@@ -652,16 +629,15 @@ export type ProductSelectScalar = {
   originalPrice?: boolean
   image?: boolean
   category?: boolean
-  unit?: boolean
+  flashdeal?: boolean
   stock?: boolean
-  isOrganic?: boolean
   rating?: boolean
   reviewCount?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type ProductOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "description" | "price" | "originalPrice" | "image" | "category" | "unit" | "stock" | "isOrganic" | "rating" | "reviewCount" | "createdAt" | "updatedAt", ExtArgs["result"]["product"]>
+export type ProductOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "description" | "price" | "originalPrice" | "image" | "category" | "flashdeal" | "stock" | "rating" | "reviewCount" | "createdAt" | "updatedAt", ExtArgs["result"]["product"]>
 
 export type $ProductPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Product"
@@ -674,9 +650,8 @@ export type $ProductPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     originalPrice: number | null
     image: string
     category: string
-    unit: string | null
+    flashdeal: number | null
     stock: number | null
-    isOrganic: boolean | null
     rating: number | null
     reviewCount: number | null
     createdAt: Date
@@ -1111,9 +1086,8 @@ export interface ProductFieldRefs {
   readonly originalPrice: Prisma.FieldRef<"Product", 'Float'>
   readonly image: Prisma.FieldRef<"Product", 'String'>
   readonly category: Prisma.FieldRef<"Product", 'String'>
-  readonly unit: Prisma.FieldRef<"Product", 'String'>
+  readonly flashdeal: Prisma.FieldRef<"Product", 'Int'>
   readonly stock: Prisma.FieldRef<"Product", 'Int'>
-  readonly isOrganic: Prisma.FieldRef<"Product", 'Boolean'>
   readonly rating: Prisma.FieldRef<"Product", 'Float'>
   readonly reviewCount: Prisma.FieldRef<"Product", 'Int'>
   readonly createdAt: Prisma.FieldRef<"Product", 'DateTime'>

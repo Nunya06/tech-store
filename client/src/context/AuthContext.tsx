@@ -42,7 +42,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
             localStorage.setItem("auth_token", data.token);
             localStorage.setItem("auth_user", JSON.stringify(data.user));
             toast.success("Login successful");
-            navigate("/");
+            navigate(data.user?.isAdmin ? "/admin" : "/");
         } catch (error: any) {
             toast.error(error?.response?.data?.message || error?.message);
         }
@@ -56,7 +56,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
             localStorage.setItem("auth_token", data.token);
             localStorage.setItem("auth_user", JSON.stringify(data.user));
             toast.success("Registration successful");
-            navigate("/");
+            navigate(data.user?.isAdmin ? "/admin" : "/");
         } catch (error: any) {
             toast.error(error?.response?.data?.message || error?.message);
         }

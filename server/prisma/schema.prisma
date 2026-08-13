@@ -44,9 +44,8 @@ model Product {
     originalPrice Float?   @default(0)
     image         String
     category      String
-    unit          String?  @default("piece")
+    flashdeal     Int?     @default(0)
     stock         Int?     @default(0)
-    isOrganic     Boolean? @default(false)
     rating        Float?   @default(0)
     reviewCount   Int?     @default(0)
     createdAt     DateTime @default(now())

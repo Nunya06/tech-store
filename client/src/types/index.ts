@@ -38,11 +38,12 @@ export interface Product {
     category: string;
     unit: string;
     stock: number;
-    isOrganic: boolean;
+    flashdeal: number;
     rating: number;
     reviewCount: number;
     discount: number;
     createdAt: string;
+    updatedAt:string;
 }
 
 export interface CartItem {

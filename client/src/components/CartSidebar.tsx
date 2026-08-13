@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 import { ArrowRightIcon, MinusIcon, PlusIcon, ShoppingBagIcon, Trash2Icon, XIcon } from "lucide-react";
+import { formatCurrency } from "../utils/format";
 
 const CartSidebar = () => {
     const currency = import.meta.env.VITE_CURRENCY_SYMBOL || "$";
@@ -26,7 +27,9 @@ const CartSidebar = () => {
                     <div className="flex items-center gap-2">
                         <ShoppingBagIcon className="size-5" />
                         <h2 className="text-lg font-medium">Your Cart</h2>
-                        <span className="px-2 py-0.5 text-xs font-semibold bg-app-cream rounded-full">{items.length} items</span>
+                        <span className="px-2 py-0.5 text-xs font-semibold bg-app-cream rounded-full">
+                            {items.length} {items.length === 1 ? "item" : "items"}
+                        </span>
                     </div>
                     <button onClick={() => setIsCartOpen(false)} className="p-2 rounded-xl hover:bg-app-cream transition-colors">
                         <XIcon className="size-5" />
@@ -47,8 +50,7 @@ const CartSidebar = () => {
                                 <div className="flex-1 min-w-0">
                                     <h4 className="text-sm font-semibold truncate">{item.product.name}</h4>
                                     <p className="text-xs text-app-text-light">
-                                        {currency}
-                                        {item.product.price.toFixed(2)} / {item.product.unit}
+                                        {formatCurrency(item.product.price, "", 2)} / {item.product.unit}
                                     </p>
                                     <div className="flex items-center justify-between mt-2">
                                         <div className="flex items-center gap-1.5">
@@ -64,8 +66,7 @@ const CartSidebar = () => {
                                         </div>
                                         <div className="flex items-center gap-2">
                                             <span className="text-sm font-semibold">
-                                                {currency}
-                                                {(item.product.price * item.quantity).toFixed(2)}
+                                                {formatCurrency(item.product.price * item.quantity, currency, 2)}
                                             </span>
                                             <button onClick={() => removeFromCart(item.product.id)} className="p-1 text-app-text-light hover:text-app-error transition-colors">
                                                 <Trash2Icon className="size-4" />
@@ -83,14 +84,13 @@ const CartSidebar = () => {
                         <div className="flex justify-between text-sm">
                             <span className="text-app-text-light">Subtotal</span>
                             <span className="font-medium">
-                                {currency}
-                                {cartTotal.toFixed(2)}
+                                {formatCurrency(cartTotal, currency, 2)}
                             </span>
                         </div>
 
                         <div className="flex justify-between text-sm">
                             <span className="text-app-text-light">Delivery</span>
-                            <span className="font-medium">{deliveryFee === 0 ? <span className="text-app-success">Free</span> : `${currency}${deliveryFee.toFixed(2)}`}</span>
+                            <span className="font-medium">{deliveryFee === 0 ? <span className="text-app-orange-dark">Free</span> : formatCurrency(deliveryFee, currency, 2)}</span>
                         </div>
 
                         {deliveryFee > 0 && <p className="text-xs text-app-text-light text-center">Free delivery on orders over {currency}20!</p>}
@@ -98,8 +98,7 @@ const CartSidebar = () => {
                         <div className="flex justify-between text-base font-semibold border-t border-app-border pt-3">
                             <span>Total</span>
                             <span>
-                                {currency}
-                                {grandTotal.toFixed(2)}
+                                {formatCurrency(grandTotal, currency, 2)}
                             </span>
                         </div>
 
@@ -109,7 +108,7 @@ const CartSidebar = () => {
                                 navigate("/checkout");
                                 window.scrollTo(0, 0);
                             }}
-                            className="w-full py-3 bg-app-orange text-white font-semibold rounded-xl hover:bg-app-orange-dark transition-colors flex-center gap-2 active:scale-[0.98]"
+                            className="w-full py-3 bg-app-orange-dark text-white font-semibold rounded-xl hover:bg-app-black transition-colors flex-center gap-2 active:scale-[0.98]"
                         >
                             Proceed to Checkout <ArrowRightIcon className="size-4" />
                         </button>

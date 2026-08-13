@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
-import type { Product } from "../../types";
-import { Link } from "react-router-dom";
-import { ArrowRightIcon } from "lucide-react";
-import ProductCard from "../ProductCard";
+
+import ProductCard from '../ProductCard'
+import { ArrowRightIcon } from 'lucide-react'
+import { useNavigate } from 'react-router-dom'
 import api from "../../config/api";
 import toast from "react-hot-toast";
+import { useEffect, useState } from 'react';
+import type { Product } from '../../types';
 
 const PopularProducts = () => {
     const [products, setProducts] = useState<Product[]>([]);
@@ -18,26 +19,32 @@ const PopularProducts = () => {
                 toast.error(error.response.data.message || error?.message);
             });
     }, []);
+    const navigate = useNavigate()
+
     return (
-        <section className="pb-16">
+        <section className="pb-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
             <div className="max-w-7xl mx-auto ">
-                <div className="flex items-center justify-between mb-8">
-                    <div>
-                        <h2 className="text-2xl font-semibold">Popular Products</h2>
-                        <p className="text-sm text-app-text-light mt-1">Top-rated products this season</p>
-                    </div>
-                    <Link to="/products" className="text-sm font-semibold text-app-orange hover:text-app-orange-dark flex items-center gap-1 transition-colors">
-                        View All <ArrowRightIcon className="size-4" />
-                    </Link>
+                <div className="flex flex-col justify-center items-center mb-15">
+                    <h2 className="text-4xl font-medium mb-2">Popular Products</h2>
+                    <p className="max-w-lg justify-center text-center text-sm text-app-text-light mt-1">Discover premium products at unbeatable prices curated for quality, comfort and style.</p>
                 </div>
-                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5  gap-4 xl:gap-8">
-                    {products.slice(0, 10).map((product) => (
+
+                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 xl:gap-8">
+                    {products.slice(0,10).map((product) => (
                         <ProductCard key={product.id} product={product} />
                     ))}
                 </div>
+
+                <div className="flex justify-center mt-10">
+                    <button onClick={() => { window.scrollTo(0, 0); navigate('/products'); }} className="px-3 py-3 text-white bg-app-orange-dark font-semibold rounded-lg hover:bg-app-black transition-colors flex items-center gap-2">
+                        View All Products
+                        <ArrowRightIcon className="size-4" />
+                    </button>
+                </div>
+
             </div>
         </section>
     );
-};
+}
 
-export default PopularProducts;
+export default PopularProducts

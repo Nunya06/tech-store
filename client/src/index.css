@@ -1,15 +1,20 @@
 @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=DM+Serif+Display:ital@0;1&display=swap");
+
 @import "tailwindcss";
 
 @theme {
-    --color-app-green: #1b3022;
-    --color-app-green-light: #2d4a35;
-    --color-app-green-lighter: #3d6b4a;
-    --color-app-orange: #f97316;
-    --color-app-orange-dark: #ea580c;
-    --color-app-cream: #faf7f2;
-    --color-app-cream-dark: #f0ebe3;
-    --color-app-text: #1b3022;
+
+    --color-app-white: #ffffff;
+    --color-app-black: #111827;
+    --color-app-orange-dark: #7a0c0c;
+    --color-app-orange-dark: #10b981;
+    --color-app-orange-dark-hover: #065f46;
+    --color-app-orange: #111111;
+    --color-app-orange-dark: #7a0c0c;
+    --color-app-cream-light: #f8fafc;
+    --color-app-cream: #f3f4f6;
+    --color-app-cream-dark: #e5e7eb;
+    --color-app-text: #111827;
     --color-app-text-light: #6b7280;
     --color-app-border: #e5e7eb;
     --color-app-success: #22c55e;
@@ -23,7 +28,7 @@
 body {
     font-family: var(--font-sans);
     color: var(--color-app-text);
-    background-color: var(--color-app-cream);
+    background-color: var(--color-app-white);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -39,7 +44,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: var(--color-app-green-lighter);
+    background: var(--color-app-black);
     border-radius: 3px;
 }
 

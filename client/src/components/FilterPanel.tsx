@@ -5,10 +5,10 @@ const FilterPanel = ({ categories, category, minPrice, maxPrice, updateFilter, c
         <div className="space-y-6">
             {/* Categories */}
             <div>
-                <h3 className="text-sm font-semibold text-app-green mb-3">Categories</h3>
+                <h3 className="text-sm font-semibold text-app-black mb-3">Categories</h3>
                 <div className="space-y-1.5">
                     {categoriesWithAll.map((cat: any) => (
-                        <button key={cat.slug} onClick={() => updateFilter("category", cat.slug)} className={`block w-full text-left px-3 py-2 text-sm rounded-md transition-all ${category === cat.slug ? "bg-app-green text-white" : "text-app-text-light hover:bg-app-cream"}`}>
+                        <button key={cat.slug} onClick={() =>{window.scrollTo(0, 0); updateFilter("category", cat.slug)} }  className={`block w-full text-left px-3 py-2 text-sm rounded-md transition-all ${category === cat.slug ? "bg-app-orange-dark text-app-white" : "text-app-text-light hover:bg-app-cream"}`}>
                             {cat.name}
                         </button>
                     ))}
@@ -17,7 +17,7 @@ const FilterPanel = ({ categories, category, minPrice, maxPrice, updateFilter, c
 
             {/* Price Range */}
             <div>
-                <h3 className="text-sm font-semibold text-app-green mb-3">Price Range</h3>
+                <h3 className="text-sm font-semibold text-app-orange-dark mb-3">Price Range</h3>
                 <div className="flex items-center gap-2">
                     <input type="number" placeholder="Min" value={minPrice} onChange={(e) => updateFilter("minPrice", e.target.value)} className="w-full px-3 py-2 text-sm bg-white rounded-lg border not-focus:border-app-border" />
 

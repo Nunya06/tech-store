@@ -1,44 +1,50 @@
 import { TruckIcon, LeafIcon, ClockIcon, ShieldCheckIcon, MapPinIcon, PhoneIcon, MailIcon } from "lucide-react";
 import { SiFacebook, SiX, SiInstagram } from "@icons-pack/react-simple-icons";
-import hero_bg from "./hero_bg.jpeg";
 import delivery_truck from "./delivery_truck.svg";
-import fruits_vegetables from "./fruits_vegetables.png";
-import dairy_eggs from "./dairy_eggs.png";
-import bakery from "./bakery.png";
-import drinks from "./drinks.png";
-import pantry_staples from "./pantry_staples.png";
-import snacks from "./snacks.png";
-import frozen_foods from "./frozen_foods.png";
-import personal_care from "./personal_care.png";
-import baby_care from "./baby_care.png";
-import meat_seafood from "./meat_seafood.png";
+// import fruits_vegetables from "./fruits_vegetables.png";
+// import dairy_eggs from "./dairy_eggs.png";
+// import bakery from "./bakery.png";
+// import drinks from "./drinks.png";
+// import pantry_staples from "./pantry_staples.png";
+// import snacks from "./snacks.png";
+// import frozen_foods from "./frozen_foods.png";
+// import personal_care from "./personal_care.png";
+// import baby_care from "./baby_care.png";
+// import meat_seafood from "./meat_seafood.png";
+import logo from "./logo.png";
+import headphones from "./bose_headphone_image.png";
+import laptops from "./macbook_image.png";
+import phone from "./phone.png";
+import watch from "./watch.png";
+import controller from "./controller.png";
+import charger from "./charger.png";
+import hero_bg from "./main-bg.jpg";
 
 export const assets = {
     delivery_truck,
     hero_bg,
+    logo,
 };
 
+
+
 export const categoriesData = [
-    { slug: "fruits-vegetables", name: "Fruits & Vegetables", image: fruits_vegetables },
-    { slug: "personal-care", name: "Personal Care", image: personal_care },
-    { slug: "pantry-staples", name: "Pantry Staples", image: pantry_staples },
-    { slug: "bakery", name: "Bakery", image: bakery },
-    { slug: "beverages", name: "Beverages", image: drinks },
-    { slug: "meat-seafood", name: "Meat & Seafood", image: meat_seafood },
-    { slug: "snacks", name: "Snacks", image: snacks },
-    { slug: "frozen-foods", name: "Frozen Foods", image: frozen_foods },
-    { slug: "baby-care", name: "Baby Care", image: baby_care },
-    { slug: "dairy-eggs", name: "Dairy & Eggs", image: dairy_eggs },
+    { slug: "smartphones", name: "Smartphones", image: phone, desc: "Latest mobile powerhouses" },
+    { slug: "laptops", name: "Laptops", image: laptops, desc: "Performance for every workflow" },
+    { slug: "wearables", name: "Wearables", image: watch, desc: "Fitness and connectivity on the go" },
+    { slug: "audio", name: "Audio", image: headphones, desc: "Immersive sound for life" },
+    { slug: "gaming", name: "Gaming", image: controller, desc: "Gear for next-level play" },
+    { slug: "accessories", name: "Accessories", image: charger, desc: "Enhance your tech experience" },
 ];
 
 export const heroSectionData = {
-    description: "Fresh, organic groceries delivered from local farms to your doorstep. Quality you can taste, convenience you deserve.",
+    description: "Explore premium gadgets and smart devices curated for modern living—sleek design, powerful performance, and seamless everyday convenience.",
     hero_image: hero_bg,
     hero_features: [
-        { icon: TruckIcon, title: "Free Delivery", desc: "Orders over $20" },
-        { icon: LeafIcon, title: "100% Organic", desc: "Certified products" },
-        { icon: ClockIcon, title: "Same Day", desc: "Express delivery" },
-        { icon: ShieldCheckIcon, title: "Secure Pay", desc: "Safe checkout" },
+        { icon: TruckIcon, title: "Fast Delivery", desc: "Delivered in 24 hours" },
+        { icon: LeafIcon, title: "Premium Quality", desc: "Top-rated tech picks" },
+        { icon: ClockIcon, title: "Quick Support", desc: "Help when you need it" },
+        { icon: ShieldCheckIcon, title: "Secure Checkout", desc: "Protected payment gateway" },
     ],
 };
 
@@ -51,8 +57,8 @@ export const appPromoBannerData = {
 
 export const footerData = {
     brand: {
-        name: "Instacart",
-        description: "Bringing fresh, organic groceries straight from local farms to your doorstep. Nourish your home with Earth's finest.",
+        name: "Tekvio",
+        description: "Your destination for premium tech essentials, smart gadgets, and reliable innovation that elevates everyday living.",
         socials: [
             { icon: SiFacebook, link: "#" },
             { icon: SiX, link: "#" },
@@ -64,34 +70,34 @@ export const footerData = {
         {
             title: "Quick Links",
             links: [
-                { label: "All Products", to: "/products" },
-                { label: "Flash Deals", to: "/deals" },
-                { label: "Track Order", to: "/orders" },
-                { label: "Delivery Partner", to: "/delivery" },
+                { label: "All Products", to: "/products", },
+                { label: "Flash Deals", to: "/deals", },
+                { label: "Track Order", to: "/orders", },
+                { label: "Delivery Partner", to: "/delivery", },
             ],
         },
         {
             title: "Customer Service",
             links: [
-                { label: "My Account", to: "#" },
-                { label: "Order History", to: "#" },
-                { label: "Addresses", to: "#" },
-                { label: "Help Center", href: "#" },
+                { label: "My Account", to: "#", },
+                { label: "Order History", to: "#", },
+                { label: "Addresses", to: "#", },
+                { label: "Help Center", href: "#", },
             ],
         },
     ],
 
     contact: [
-        { icon: MapPinIcon, text: "123 Green Valley Rd, Portland" },
-        { icon: PhoneIcon, text: "+1 (111) 123-4567" },
-        { icon: MailIcon, text: "hello@example.com" },
+        { icon: MapPinIcon, text: "Ho-Fiave, Volta" },
+        { icon: PhoneIcon, text: "+233 591 092 479" },
+        { icon: MailIcon, text: "mydev928@gmail.com" },
     ],
 
     bottom: {
-        copyright: "© 2026 Greatstack. All rights reserved.",
+        copyright: "© 2026 NicheDev. All rights reserved.",
         links: [
-            { label: "Privacy Policy", href: "#" },
-            { label: "Terms of Service", href: "#" },
+            { label: "Privacy Policy", href: "#", },
+            { label: "Terms of Service", href: "#", },
         ],
     },
 };

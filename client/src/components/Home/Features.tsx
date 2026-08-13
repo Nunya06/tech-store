@@ -2,7 +2,7 @@ import { heroSectionData } from "../../assets/assets";
 
 const Features = () => {
     return (
-        <section className="bg-white py-5 border border-app-border/80 rounded-xl">
+        <section className="bg-white  border border-app-border/80 rounded-xl min-h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 mt-10 mb-20">
             <div className="mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                     {heroSectionData.hero_features.map((feature, i) => (
@@ -11,11 +11,12 @@ const Features = () => {
                                 <feature.icon className="size-5" />
                             </div>
                             <div>
-                                <p className="text-sm font-semibold text-app-green">{feature.title}</p>
+                                <p className="text-sm font-semibold text-app-orange-dark">{feature.title}</p>
                                 <p className="text-xs text-app-text-light">{feature.desc}</p>
                             </div>
                         </div>
                     ))}
+                    
                 </div>
             </div>
         </section>
