@@ -27,7 +27,7 @@ const FlashDeals = () => {
               <span className="text-app-white text-xs font-semibold tracking-wide">FLASH DEALS</span>
             </div>
 
-            <h1 className="text-4xl sm:text-5xl md:text-5xl font-semibold text-app-orange-dark mb-4 max-w-3xl leading-tight">
+            <h1 className="text-4xl sm:text-5xl md:text-5xl font-semibold text-app-white mb-4 max-w-3xl leading-tight">
               Lightning-Fast Savings
             </h1>
 
@@ -45,7 +45,7 @@ const FlashDeals = () => {
         ) : products.length === 0 ? (
           <div className="text-center py-16">
             <Zap className="size-16 text-app-border mx-auto mb-4" />
-            <h2 className="text-lg font-semibold text-app-orange-dark mb-2">No deals right now</h2>
+            <h2 className="text-lg font-semibold text-app-black mb-2">No deals right now</h2>
             <p className="text-sm text-app-text-light">Check back soon for amazing offers!</p>
           </div>
         ) : (

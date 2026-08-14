@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 import type { Address } from "../types";
 import { ArrowLeft, CheckIcon, ChevronRightIcon, CreditCardIcon, MapPinIcon } from "lucide-react";
+import { formatCurrency } from "../utils/format";
 import CheckoutAddress from "../components/Checkout/CheckoutAddress";
 import CheckoutPayment from "../components/Checkout/CheckoutPayment";
 import CheckoutReview from "../components/Checkout/CheckoutReview";
@@ -14,7 +15,7 @@ const Checkout = () => {
     const navigate = useNavigate();
     const currency = import.meta.env.VITE_CURRENCY_SYMBOL || "$";
 
-    const { items, cartTotal, clearCart } = useCart();
+    const { items, cartQuantity, cartTotal, clearCart } = useCart();
     const { user } = useAuth();
 
     const [step, setStep] = useState("address");
@@ -35,7 +36,7 @@ const Checkout = () => {
     const [paymentMethod, setPaymentMethod] = useState("card");
 
     const deliveryFee = cartTotal > 20 ? 0 : 1.99;
-    const tax = cartTotal * 0.08;
+    const tax = cartTotal * 0.03;
     const total = cartTotal + deliveryFee + tax;
 
     const steps: { key: string; label: string; icon: typeof MapPinIcon }[] = [
@@ -96,9 +97,9 @@ const Checkout = () => {
         return (
             <div className="min-h-screen bg-app-cream flex-center">
                 <div className="text-center">
-                    <h2 className="text-xl font-semibold text-app-green mb-2">Your cart is empty</h2>
+                    <h2 className="text-xl font-semibold text-app-orange mb-2">Your cart is empty</h2>
                     <p className="text-sm text-app-text-light mb-4">Add some products to checkout</p>
-                    <button onClick={() => navigate("/products")} className="px-5 py-2.5 bg-app-green text-white text-sm font-medium rounded-xl hover:bg-app-green-light transition-colors">
+                    <button onClick={() => navigate("/products")} className="px-5 py-2.5 bg-app-black text-white text-sm font-medium rounded-xl hover:bg-app-orange-light transition-colors">
                         Browse Products
                     </button>
                 </div>
@@ -110,17 +111,17 @@ const Checkout = () => {
         <div className="min-h-screen bg-app-cream">
             <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
                 {/* Back Button */}
-                <button onClick={() => navigate(-1)} className="flex items-center gap-2 text-sm text-app-text-light hover:text-app-green mb-6 transition-colors">
+                <button onClick={() => navigate(-1)} className="flex items-center gap-2 text-sm text-app-text-light hover:text-app-orange-dark mb-6 transition-colors">
                     <ArrowLeft className="size-4" /> Back
                 </button>
 
-                <h1 className="text-2xl font-semibold text-app-green mb-8">Checkout</h1>
+                <h1 className="text-2xl font-semibold text-app-orange mb-8">Checkout</h1>
 
                 {/* Steps */}
                 <div className="flex items-center gap-2 mb-8">
                     {steps.map((s, i) => (
                         <div key={s.key} className="flex items-center gap-2">
-                            <button onClick={() => setStep(s.key)} className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-colors ${step === s.key ? "bg-app-green text-white" : "bg-white text-app-text-light"}`}>
+                            <button onClick={() => setStep(s.key)} className={`flex items-center gap-1 px-2 py-2 rounded-xl text-sm font-medium transition-colors ${step === s.key ? "bg-app-orange-dark text-white" : "bg-white text-app-text-light"}`}>
                                 <s.icon className="size-4" /> {s.label}
                                 {i < steps.length - 1 && <ChevronRightIcon className="size-4 text-app-text-light" />}
                             </button>
@@ -140,35 +141,32 @@ const Checkout = () => {
 
                     {/* Order Summary Sidebar */}
                     <div className="bg-white rounded-2xl p-5 h-fit sticky top-24">
-                        <h3 className="text-sm font-semibold text-app-green mb-4">Order Summary</h3>
+                        <h3 className="text-sm font-semibold text-app-orange mb-4">Order Summary</h3>
 
                         <div className="space-y-2 text-sm">
                             <div className="flex justify-between">
-                                <span className="text-app-text-light">Subtotal ({items.length} items)</span>
+                                <span className="text-app-text-light">Subtotal ({cartQuantity} {cartQuantity === 1 ? "item" : "items"})</span>
                                 <span>
-                                    {currency}
-                                    {cartTotal.toFixed(2)}
+                                    {formatCurrency(cartTotal, currency, 2)}
                                 </span>
                             </div>
 
                             <div className="flex justify-between">
                                 <span className="text-app-text-light">Delivery</span>
-                                <span>{deliveryFee === 0 ? <span className="text-app-success">Free</span> : `${currency}${deliveryFee.toFixed(2)}`}</span>
+                                <span>{deliveryFee === 0 ? <span className="text-app-black">Free</span> : formatCurrency(deliveryFee, currency, 2)}</span>
                             </div>
 
                             <div className="flex justify-between">
                                 <span className="text-app-text-light">Tax</span>
                                 <span>
-                                    {currency}
-                                    {tax.toFixed(2)}
+                                    {formatCurrency(tax, currency, 2)}
                                 </span>
                             </div>
 
                             <div className="flex justify-between pt-3 border-t border-app-border text-base font-semibold">
                                 <span>Total</span>
-                                <span className="text-app-green">
-                                    {currency}
-                                    {total.toFixed(2)}
+                                <span className="text-app-orange">
+                                    {formatCurrency(total, currency, 2)}
                                 </span>
                             </div>
                         </div>

@@ -117,7 +117,7 @@ export default function AdminProductForm() {
                                     type="text"
                                     value={formData.name}
                                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                                    className="w-full px-4 py-2.5 rounded-lg border border-zinc-200 focus:border-app-green focus:ring-1 focus:ring-app-green outline-none transition-all"
+                                    className="w-full px-4 py-2.5 rounded-lg border border-zinc-200 focus:border-app-orange focus:ring-1 focus:ring-app-orange outline-none transition-all"
                                 />
                             </div>
                             <div>
@@ -126,7 +126,7 @@ export default function AdminProductForm() {
                                     required
                                     value={formData.category}
                                     onChange={(e) => setFormData({ ...formData, category: e.target.value })}
-                                    className="w-full px-4 py-2.5 rounded-lg border border-zinc-200 focus:border-app-green focus:ring-1 focus:ring-app-green outline-none transition-all bg-white"
+                                    className="w-full px-4 py-2.5 rounded-lg border border-zinc-200 focus:border-app-orange focus:ring-1 focus:ring-app-orange outline-none transition-all bg-white"
                                 >
                                     <option value="">Select a category</option>
                                     {categoriesData.map((c) => (
@@ -145,7 +145,7 @@ export default function AdminProductForm() {
                                     min="0"
                                     value={formData.price}
                                     onChange={(e) => setFormData({ ...formData, price: e.target.value })}
-                                    className="w-full px-4 py-2.5 rounded-lg border border-zinc-200 focus:border-app-green focus:ring-1 focus:ring-app-green outline-none transition-all"
+                                    className="w-full px-4 py-2.5 rounded-lg border border-zinc-200 focus:border-app-orange focus:ring-1 focus:ring-app-orange outline-none transition-all"
                                 />
                             </div>
                             <div>
@@ -156,7 +156,7 @@ export default function AdminProductForm() {
                                     min="0"
                                     value={formData.originalPrice}
                                     onChange={(e) => setFormData({ ...formData, originalPrice: e.target.value })}
-                                    className="w-full px-4 py-2.5 rounded-lg border border-zinc-200 focus:border-app-green focus:ring-1 focus:ring-app-green outline-none transition-all"
+                                    className="w-full px-4 py-2.5 rounded-lg border border-zinc-200 focus:border-app-orange focus:ring-1 focus:ring-app-orange outline-none transition-all"
                                 />
                             </div>
                             <div>
@@ -167,7 +167,7 @@ export default function AdminProductForm() {
                                     placeholder="e.g., kg, piece, liter"
                                     value={formData.unit}
                                     onChange={(e) => setFormData({ ...formData, unit: e.target.value })}
-                                    className="w-full px-4 py-2.5 rounded-lg border border-zinc-200 focus:border-app-green focus:ring-1 focus:ring-app-green outline-none transition-all"
+                                    className="w-full px-4 py-2.5 rounded-lg border border-zinc-200 focus:border-app-orange focus:ring-1 focus:ring-app-orange outline-none transition-all"
                                 />
                             </div>
                             <div>
@@ -178,7 +178,7 @@ export default function AdminProductForm() {
                                     min="0"
                                     value={formData.stock}
                                     onChange={(e) => setFormData({ ...formData, stock: e.target.value })}
-                                    className="w-full px-4 py-2.5 rounded-lg border border-zinc-200 focus:border-app-green focus:ring-1 focus:ring-app-green outline-none transition-all"
+                                    className="w-full px-4 py-2.5 rounded-lg border border-zinc-200 focus:border-app-orange focus:ring-1 focus:ring-app-orange outline-none transition-all"
                                 />
                             </div>
                             <div className="md:col-span-2">
@@ -193,7 +193,7 @@ export default function AdminProductForm() {
                                         type="file"
                                         accept="image/*"
                                         onChange={(e) => setImageFile(e.target.files?.[0] || null)}
-                                        className="w-full px-4 py-2.5 rounded-lg border border-zinc-200 focus:border-app-green outline-none transition-all file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-medium file:bg-app-orange file:text-white hover:file:bg-orange-600 cursor-pointer"
+                                        className="w-full px-4 py-2.5 rounded-lg border border-zinc-200 focus:border-app-orange-dark outline-none transition-all file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-medium file:bg-app-orange file:text-white hover:file:bg-app-orange-dark cursor-pointer"
                                     />
                                 </div>
                             </div>
@@ -204,19 +204,19 @@ export default function AdminProductForm() {
                                     rows={4}
                                     value={formData.description}
                                     onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                                    className="w-full px-4 py-2.5 rounded-lg border border-zinc-200 focus:border-app-green focus:ring-1 focus:ring-app-green outline-none transition-all resize-none"
+                                    className="w-full px-4 py-2.5 rounded-lg border border-zinc-200 focus:border-app-orange focus:ring-1 focus:ring-app-orange outline-none transition-all resize-none"
                                 />
                             </div>
-                            <div className="flex items-center gap-3">
+                            {/* <div className="flex items-center gap-3">
                                 <label htmlFor="isOrganic" className="text-sm font-medium text-zinc-700 cursor-pointer">
                                     Organic
                                 </label>
-                                <input type="checkbox" id="isOrganic" checked={formData.isOrganic} onChange={(e) => setFormData({ ...formData, isOrganic: e.target.checked })} className="size-5 text-app-green rounded border-zinc-300 focus:ring-app-green cursor-pointer" />
-                            </div>
+                                <input type="checkbox" id="isOrganic" checked={formData.isOrganic} onChange={(e) => setFormData({ ...formData, isOrganic: e.target.checked })} className="size-5 text-app-orange rounded border-zinc-300 focus:ring-app-orange cursor-pointer" />
+                            </div> */}
                         </div>
 
                         <div className="pt-6 border-t border-app-border flex justify-end">
-                            <button disabled={saving} type="submit" className="px-6 py-2.5 bg-app-orange text-white font-medium rounded-lg hover:bg-orange-600 transition-colors disabled:opacity-50">
+                            <button disabled={saving} type="submit" className="px-6 py-2.5 bg-app-orange-dark text-white font-medium rounded-lg hover:bg-app-black transition-colors disabled:opacity-50">
                                 {saving ? "Saving..." : "Save Product"}
                             </button>
                         </div>

@@ -59,7 +59,7 @@ export default function AdminDeliveryPartners() {
         <div className="space-y-6">
             <div className="flex items-center justify-between">
                 <h1 className="text-xl font-semibold text-zinc-900">Delivery Partners</h1>
-                <button onClick={() => setShowForm(true)} className="px-4 py-2 bg-app-green text-white text-sm font-semibold rounded-xl hover:bg-app-green-light transition-colors flex items-center gap-2">
+                <button onClick={() => setShowForm(true)} className="px-4 py-2 bg-app-orange-dark text-white text-sm font-semibold rounded-xl hover:bg-app-black transition-colors flex items-center gap-2">
                     <PlusIcon className="size-4" /> Add Partner
                 </button>
             </div>
@@ -77,7 +77,7 @@ export default function AdminDeliveryPartners() {
                         <div key={p.id} className="bg-white rounded-2xl border border-app-border p-5 space-y-3">
                             <div className="flex items-center justify-between">
                                 <div className="flex items-center gap-3">
-                                    <div className="size-10 rounded-full bg-app-green flex-center">
+                                    <div className="size-10 rounded-full bg-app-orange flex-center">
                                         <span className="text-white font-semibold text-sm">{p.name.charAt(0)}</span>
                                     </div>
                                     <div>
@@ -110,34 +110,34 @@ export default function AdminDeliveryPartners() {
                     <div className="fixed inset-0 z-50 flex-center p-4">
                         <form onSubmit={handleSubmit} className="bg-white rounded-2xl p-6 w-full max-w-lg animate-fade-in">
                             <div className="flex items-center justify-between mb-5">
-                                <h2 className="text-lg font-semibold text-app-green">Onboard Delivery Partner</h2>
+                                <h2 className="text-lg font-semibold text-app-orange">Onboard Delivery Partner</h2>
                                 <button type="button" onClick={() => setShowForm(false)} className="p-2 hover:bg-app-cream rounded-lg">
                                     <XIcon className="size-5" />
                                 </button>
                             </div>
                             <div className="space-y-4">
                                 <div>
-                                    <label className="block text-sm font-medium text-app-green mb-1.5">Full Name</label>
-                                    <input type="text" required value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} className="w-full px-4 py-2.5 text-sm rounded-xl border border-app-border focus:border-app-green outline-none" />
+                                    <label className="block text-sm font-medium text-app-orange mb-1.5">Full Name</label>
+                                    <input type="text" required value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} className="w-full px-4 py-2.5 text-sm rounded-xl border border-app-border focus:border-app-orange outline-none" />
                                 </div>
                                 <div className="grid grid-cols-2 gap-3">
                                     <div>
-                                        <label className="block text-sm font-medium text-app-green mb-1.5">Email</label>
-                                        <input type="email" required value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} className="w-full px-4 py-2.5 text-sm rounded-xl border border-app-border focus:border-app-green outline-none" />
+                                        <label className="block text-sm font-medium text-app-orange mb-1.5">Email</label>
+                                        <input type="email" required value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} className="w-full px-4 py-2.5 text-sm rounded-xl border border-app-border focus:border-app-orange outline-none" />
                                     </div>
                                     <div>
-                                        <label className="block text-sm font-medium text-app-green mb-1.5">Password</label>
-                                        <input type="password" required minLength={6} value={form.password} onChange={(e) => setForm({ ...form, password: e.target.value })} className="w-full px-4 py-2.5 text-sm rounded-xl border border-app-border focus:border-app-green outline-none" />
+                                        <label className="block text-sm font-medium text-app-orange mb-1.5">Password</label>
+                                        <input type="password" required minLength={6} value={form.password} onChange={(e) => setForm({ ...form, password: e.target.value })} className="w-full px-4 py-2.5 text-sm rounded-xl border border-app-border focus:border-app-orange outline-none" />
                                     </div>
                                 </div>
                                 <div className="grid grid-cols-2 gap-3">
                                     <div>
-                                        <label className="block text-sm font-medium text-app-green mb-1.5">Phone</label>
-                                        <input type="text" required value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} className="w-full px-4 py-2.5 text-sm rounded-xl border border-app-border focus:border-app-green outline-none" />
+                                        <label className="block text-sm font-medium text-app-orange mb-1.5">Phone</label>
+                                        <input type="text" required value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} className="w-full px-4 py-2.5 text-sm rounded-xl border border-app-border focus:border-app-orange outline-none" />
                                     </div>
                                     <div>
-                                        <label className="block text-sm font-medium text-app-green mb-1.5">Vehicle Type</label>
-                                        <select value={form.vehicleType} onChange={(e) => setForm({ ...form, vehicleType: e.target.value })} className="w-full px-4 py-2.5 text-sm rounded-xl border border-app-border focus:border-app-green outline-none bg-white">
+                                        <label className="block text-sm font-medium text-app-orange mb-1.5">Vehicle Type</label>
+                                        <select value={form.vehicleType} onChange={(e) => setForm({ ...form, vehicleType: e.target.value })} className="w-full px-4 py-2.5 text-sm rounded-xl border border-app-border focus:border-app-orange outline-none bg-white">
                                             <option value="bike">Bike</option>
                                             <option value="scooter">Scooter</option>
                                             <option value="car">Car</option>
@@ -145,7 +145,7 @@ export default function AdminDeliveryPartners() {
                                     </div>
                                 </div>
                             </div>
-                            <button type="submit" disabled={saving} className="mt-6 w-full py-3 bg-app-green text-white font-semibold rounded-xl hover:bg-app-green-light transition-colors disabled:opacity-60">
+                            <button type="submit" disabled={saving} className="mt-6 w-full py-3 bg-app-orange text-white font-semibold rounded-xl hover:bg-app-orange-light transition-colors disabled:opacity-60">
                                 {saving ? "Creating..." : "Create Partner"}
                             </button>
                         </form>

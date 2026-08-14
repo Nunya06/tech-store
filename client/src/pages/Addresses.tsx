@@ -104,13 +104,13 @@ const Addresses = () => {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
                 {/* page header  */}
                 <div className="flex items-center justify-between mb-8">
-                    <h1 className="text-2xl font-semibold text-app-green">My Addresses</h1>
+                    <h1 className="text-2xl font-semibold text-app-orange">My Addresses</h1>
                     <button
                         onClick={() => {
                             resetForm();
                             setShowForm(true);
                         }}
-                        className="px-4 py-2 bg-app-green text-white text-sm font-semibold rounded-xl hover:bg-app-green-light transition-colors flex items-center gap-2"
+                        className="px-4 py-2 bg-app-orange-dark text-white text-sm font-semibold rounded-xl hover:bg-app-black transition-colors flex items-center gap-2"
                     >
                         <PlusIcon className="size-4" /> Add Address
                     </button>
@@ -125,7 +125,7 @@ const Addresses = () => {
                 ) : addresses.length === 0 ? (
                     <div className="text-center py-16">
                         <MapPinIcon className="size-16 text-app-border mx-auto mb-4" />
-                        <h2 className="text-lg font-semibold text-app-green mb-2">No addresses saved</h2>
+                        <h2 className="text-lg font-semibold text-app-orange mb-2">No addresses saved</h2>
                         <p className="text-sm text-app-text-light">Add an address for faster checkout</p>
                     </div>
                 ) : (

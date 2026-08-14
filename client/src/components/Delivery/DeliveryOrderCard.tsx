@@ -34,7 +34,7 @@ export default function DeliveryOrderCard({ order, tab, handleUpdateStatus, setO
                 {/* Customer */}
                 <div className="flex items-center gap-2 text-sm">
                     <div className="size-8 rounded-full bg-app-cream flex-center">
-                        <span className="text-xs font-semibold text-app-green">{user.name?.charAt(0)}</span>
+                        <span className="text-xs font-semibold text-app-orange">{user.name?.charAt(0)}</span>
                     </div>
                     <div>
                         <p className="font-medium text-zinc-900">{user.name}</p>
@@ -48,7 +48,7 @@ export default function DeliveryOrderCard({ order, tab, handleUpdateStatus, setO
 
                 {/* Address */}
                 <div className="flex items-start gap-2 text-sm text-zinc-600">
-                    <MapPinIcon className="size-4 text-app-green shrink-0 mt-0.5" />
+                    <MapPinIcon className="size-4 text-app-orange shrink-0 mt-0.5" />
                     <p>
                         {order.shippingAddress.address}, {order.shippingAddress.city}, {order.shippingAddress.state} {order.shippingAddress.zip}
                     </p>

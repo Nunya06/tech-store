@@ -56,10 +56,10 @@ export default function LiveMap({ order, liveLocation }: { order: any; liveLocat
                             </Marker>
                         </MapContainer>
                     ) : (
-                        <div className="h-full bg-app-green/5 flex-center">
+                        <div className="h-full bg-app-orange/5 flex-center">
                             <div className="text-center">
-                                <MapPinIcon className="size-8 text-app-green/40 mx-auto mb-2" />
-                                <p className="text-sm text-app-green/50 font-medium">Waiting for delivery partner location...</p>
+                                <MapPinIcon className="size-8 text-app-orange/40 mx-auto mb-2" />
+                                <p className="text-sm text-app-orange/50 font-medium">Waiting for delivery partner location...</p>
                             </div>
                         </div>
                     )}

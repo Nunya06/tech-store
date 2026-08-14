@@ -1,16 +1,6 @@
 import { TruckIcon, LeafIcon, ClockIcon, ShieldCheckIcon, MapPinIcon, PhoneIcon, MailIcon } from "lucide-react";
 import { SiFacebook, SiX, SiInstagram } from "@icons-pack/react-simple-icons";
 import delivery_truck from "./delivery_truck.svg";
-// import fruits_vegetables from "./fruits_vegetables.png";
-// import dairy_eggs from "./dairy_eggs.png";
-// import bakery from "./bakery.png";
-// import drinks from "./drinks.png";
-// import pantry_staples from "./pantry_staples.png";
-// import snacks from "./snacks.png";
-// import frozen_foods from "./frozen_foods.png";
-// import personal_care from "./personal_care.png";
-// import baby_care from "./baby_care.png";
-// import meat_seafood from "./meat_seafood.png";
 import logo from "./logo.png";
 import headphones from "./bose_headphone_image.png";
 import laptops from "./macbook_image.png";
@@ -19,11 +9,13 @@ import watch from "./watch.png";
 import controller from "./controller.png";
 import charger from "./charger.png";
 import hero_bg from "./main-bg.jpg";
+import loginImage from "./lg-image.jpg";
 
 export const assets = {
     delivery_truck,
     hero_bg,
     logo,
+    loginImage
 };
 
 
@@ -73,7 +65,7 @@ export const footerData = {
                 { label: "All Products", to: "/products", },
                 { label: "Flash Deals", to: "/deals", },
                 { label: "Track Order", to: "/orders", },
-                { label: "Delivery Partner", to: "/delivery", },
+                // { label: "Delivery Partner", to: "/delivery", },
             ],
         },
         {

@@ -47,7 +47,7 @@ export default function AdminDashboard() {
                             <p className="text-2xl font-semibold text-zinc-900">{card.value}</p>
                             <p className="text-sm text-app-text-light">{card.label}</p>
                         </div>
-                        <div className={`size-10 rounded-xl flex-center bg-orange-50 text-orange-600`}>
+                        <div className={`size-10 rounded-xl flex-center bg-orange-50 text-app-orange-dark`}>
                             <card.icon className="size-5" />
                         </div>
                     </div>

@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { PackageIcon, NavigationIcon } from "lucide-react";
 import OtpModal from "../../components/Delivery/OtpModal";
 import CancelModal from "../../components/Delivery/CancelModal";
@@ -30,13 +31,22 @@ export default function DeliveryDashboard() {
     const [cancelReason, setCancelReason] = useState("");
     const watchIdRef = useRef<number | null>(null);
 
+    const navigate = useNavigate();
+
     const fetchOrders = async () => {
         setLoading(true);
         try {
             const { data } = await axios.get(`${API_URL}/delivery/my-deliveries?status=${tab}`, getAuthHeaders());
             setOrders(data.orders);
         } catch (error: any) {
-            toast.error(error?.response?.data?.message || "Failed to load deliveries");
+            const msg = error?.response?.data?.message || "Failed to load deliveries";
+            toast.error(msg);
+            if (error?.response?.status === 401) {
+                // Invalid/expired token - clear and redirect to delivery login
+                localStorage.removeItem("delivery_token");
+                localStorage.removeItem("delivery_partner");
+                navigate("/delivery/login");
+            }
         } finally {
             setLoading(false);
         }
@@ -131,12 +141,12 @@ export default function DeliveryDashboard() {
             {/* Tabs + Tracking toggle */}
             <div className="flex items-center gap-2 flex-wrap">
                 {(["active", "completed"] as const).map((t) => (
-                    <button key={t} onClick={() => setTab(t)} className={`px-4 py-2 text-sm font-medium rounded-xl transition-colors ${tab === t ? "bg-app-green text-white" : "bg-white text-zinc-600 hover:bg-app-cream border border-app-border"}`}>
+                    <button key={t} onClick={() => setTab(t)} className={`px-4 py-2 text-sm font-medium rounded-xl transition-colors ${tab === t ? "bg-app-orange text-white" : "bg-white text-zinc-600 hover:bg-app-cream border border-app-border"}`}>
                         {t === "active" ? "Active" : "Completed"}
                     </button>
                 ))}
                 <div className="ml-auto">
-                    <button onClick={() => setTracking((prev) => !prev)} className={`px-4 py-2 text-sm font-medium rounded-xl transition-colors flex items-center gap-1.5 ${tracking ? "bg-green-600 text-white" : "bg-white text-zinc-600 border border-app-border hover:bg-app-cream"}`}>
+                    <button onClick={() => setTracking((prev) => !prev)} className={`px-4 py-2 text-sm font-medium rounded-xl transition-colors flex items-center gap-1.5 ${tracking ? "bg-app-orange-dark text-white" : "bg-white text-zinc-600 border border-app-border hover:bg-app-cream"}`}>
                         <NavigationIcon className={`w-3.5 h-3.5 ${tracking ? "animate-pulse" : ""}`} />
                         {tracking ? "Sharing Location" : "Share Location"}
                     </button>

@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
-import { BikeIcon } from "lucide-react";
-import { heroSectionData } from "../../assets/assets";
+import { useState , useEffect} from "react";
+import { Link } from "react-router-dom";
+import { assets, heroSectionData } from "../../assets/assets";
+import { useNavigate } from "react-router-dom";
 import api from "../../config/api";
 import toast from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
+
 
 export default function DeliveryLogin() {
     const navigate = useNavigate();
@@ -36,7 +37,7 @@ export default function DeliveryLogin() {
     return (
         <div className="min-h-screen flex">
             {/* Left Side */}
-            <div className="hidden lg:flex lg:w-1/2 bg-app-green relative items-center justify-center">
+            <div className="hidden lg:flex lg:w-1/2 bg-app-orange relative items-center justify-center">
                 <img src={heroSectionData.hero_image} alt="" className="absolute inset-0 object-cover h-full bg-center opacity-10" />
                 <div className="relative text-center px-12">
                     <h2 className="text-4xl font-semibold text-white mb-4">Delivery Partner Portal</h2>
@@ -49,23 +50,24 @@ export default function DeliveryLogin() {
                 <div className="w-full max-w-md">
                     <div className="text-center mb-8">
                         <div className="flex-center gap-2 mb-4">
-                            <BikeIcon className="size-7 text-app-green" />
-                            <span className="text-2xl font-semibold text-app-green">Instacart</span>
+                            <Link to="/" className="inline-flex items-center gap-2 mb-6">
+                                <img src={assets.logo} alt="NexiCart Logo" className='h-25 w-auto' width={205} height={48} />
+                            </Link>
                         </div>
-                        <h1 className="text-2xl font-semibold text-app-green mb-2">Delivery Partner Login</h1>
+                        <h1 className="text-2xl font-semibold text-app-orange-dark mb-2">Delivery Partner Login</h1>
                         <p className="text-sm text-app-text-light">Sign in to manage your deliveries</p>
                     </div>
 
                     <form onSubmit={handleSubmit} className="bg-white rounded-2xl p-8 space-y-5">
                         <div>
-                            <label className="block text-sm font-medium text-app-green mb-1.5">Email</label>
+                            <label className="block text-sm font-medium text-app-orange mb-1.5">Email</label>
                             <input type="email" required value={email} onChange={(e) => setEmail(e.target.value)} className="w-full px-4 py-2.5 rounded-xl border not-focus:border-app-border text-sm transition-colors" placeholder="partner@example.com" />
                         </div>
                         <div>
-                            <label className="block text-sm font-medium text-app-green mb-1.5">Password</label>
+                            <label className="block text-sm font-medium text-app-orange mb-1.5">Password</label>
                             <input type="password" required value={password} onChange={(e) => setPassword(e.target.value)} className="w-full px-4 py-2.5 rounded-xl border not-focus:border-app-border text-sm transition-colors" placeholder="••••••••" />
                         </div>
-                        <button type="submit" disabled={loading} className="w-full py-3 bg-app-green text-white font-semibold rounded-xl hover:bg-app-green-light transition-colors disabled:opacity-60">
+                        <button type="submit" disabled={loading} className="w-full py-3 bg-app-orange-dark hover:bg-app-black text-white font-semibold rounded-xl hover:bg-app-orange-light transition-colors disabled:opacity-60">
                             {loading ? "Signing in..." : "Sign In"}
                         </button>
                     </form>

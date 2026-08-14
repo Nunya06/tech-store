@@ -68,14 +68,14 @@ export default function DummyReviewsSection({ product }: { product: Product }) {
 
     return (
         <section className="mt-10 ">
-            <h2 className="text-2xl font-semibold text-app-green mb-6">Customer Reviews</h2>
+            <h2 className="text-2xl font-semibold text-app-orange mb-6">Customer Reviews</h2>
 
             <div className="bg-white/50 rounded-2xl p-6 md:p-8">
                 {/* Summary row */}
                 <div className="flex flex-col md:flex-row gap-8 mb-8 pb-8 border-b border-app-border">
                     {/* Average */}
                     <div className="flex-center flex-col md:min-w-[160px] lg:w-1/3">
-                        <span className="text-5xl font-semibold text-app-green">{product.rating}</span>
+                        <span className="text-5xl font-semibold text-app-orange">{product.rating}</span>
                         <div className="flex items-center gap-0.5 mt-2 mb-1">
                             {[1, 2, 3, 4, 5].map((s) => (
                                 <StarIcon key={s} className={`size-4 ${s <= Math.round(product.rating) ? "text-app-warning fill-app-warning" : "text-app-border"}`} />
@@ -102,7 +102,7 @@ export default function DummyReviewsSection({ product }: { product: Product }) {
                 <div className="space-y-6">
                     {reviews.map((review) => (
                         <div key={review.id} className="flex gap-4">
-                            <div className="size-10 rounded-full bg-app-green/10 text-app-green flex-center shrink-0 text-sm font-semibold">{review.avatar}</div>
+                            <div className="size-10 rounded-full bg-app-orange/10 text-app-orange flex-center shrink-0 text-sm font-semibold">{review.avatar}</div>
                             <div className="flex-1 min-w-0">
                                 <div className="flex items-center flex-wrap gap-2 mb-1">
                                     <span className="text-sm font-semibold text-app-text">{review.name}</span>
@@ -115,7 +115,7 @@ export default function DummyReviewsSection({ product }: { product: Product }) {
                                     ))}
                                 </div>
                                 <p className="text-sm text-zinc-600 leading-relaxed">{review.comment}</p>
-                                <button className="mt-2 flex items-center gap-1.5 text-xs text-zinc-600 hover:text-app-green transition-colors">
+                                <button className="mt-2 flex items-center gap-1.5 text-xs text-zinc-600 hover:text-app-orange transition-colors">
                                     <ThumbsUpIcon className="size-3.5" /> Helpful ({review.helpful})
                                 </button>
                             </div>

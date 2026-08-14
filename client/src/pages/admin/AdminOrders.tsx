@@ -115,7 +115,7 @@ export default function AdminOrders() {
                                         <td className="px-6 py-4">
                                             {order.deliveryPartner ? (
                                                 <div className="flex items-center gap-2">
-                                                    <div className="size-6 rounded-full bg-app-green flex-center">
+                                                    <div className="size-6 rounded-full bg-app-orange flex-center">
                                                         <span className="text-white text-[10px] font-semibold">{order.deliveryPartner.name?.charAt(0)}</span>
                                                     </div>
                                                     <div>
@@ -162,15 +162,15 @@ export default function AdminOrders() {
                     <div className="fixed inset-0 bg-app-cream/80 backdrop-blur z-50" onClick={() => setAssignModal(null)} />
                     <div className="fixed inset-0 z-50 flex-center p-4">
                         <div className="bg-white rounded-2xl p-6 w-full max-w-sm animate-fade-in">
-                            <h3 className="text-lg font-semibold text-app-green mb-4">Assign Delivery Partner</h3>
+                            <h3 className="text-lg font-semibold text-app-orange mb-4">Assign Delivery Partner</h3>
                             {partners.length === 0 ? (
                                 <p className="text-sm text-zinc-500 mb-4">No active delivery partners. Please onboard a partner first.</p>
                             ) : (
                                 <div className="space-y-2 mb-5 max-h-60 overflow-y-auto">
                                     {partners.map((p) => (
-                                        <label key={p.id} className={`flex items-center gap-3 p-3 rounded-xl border cursor-pointer transition-colors ${selectedPartner === p.id ? "border-app-green bg-app-green/5" : "border-app-border hover:bg-app-cream"}`}>
-                                            <input type="radio" name="partner" value={p.id} checked={selectedPartner === p.id} onChange={() => setSelectedPartner(p.id)} className="text-app-green" />
-                                            <div className="size-8 rounded-full bg-app-green flex-center">
+                                        <label key={p.id} className={`flex items-center gap-3 p-3 rounded-xl border cursor-pointer transition-colors ${selectedPartner === p.id ? "border-app-orange bg-app-orange/5" : "border-app-border hover:bg-app-cream"}`}>
+                                            <input type="radio" name="partner" value={p.id} checked={selectedPartner === p.id} onChange={() => setSelectedPartner(p.id)} className="text-app-orange" />
+                                            <div className="size-8 rounded-full bg-app-orange flex-center">
                                                 <span className="text-white text-xs font-semibold">{p.name.charAt(0)}</span>
                                             </div>
                                             <div>
@@ -187,7 +187,7 @@ export default function AdminOrders() {
                                 <button onClick={() => setAssignModal(null)} className="flex-1 py-2.5 text-sm font-medium text-zinc-600 bg-zinc-100 rounded-xl hover:bg-zinc-200 transition-colors">
                                     Cancel
                                 </button>
-                                <button onClick={handleAssign} disabled={!selectedPartner} className="flex-1 py-2.5 text-sm font-medium text-white bg-app-green rounded-xl hover:bg-app-green-light transition-colors disabled:opacity-50">
+                                <button onClick={handleAssign} disabled={!selectedPartner} className="flex-1 py-2.5 text-sm font-medium text-white bg-app-orange rounded-xl hover:bg-app-orange-light transition-colors disabled:opacity-50">
                                     Assign
                                 </button>
                             </div>
