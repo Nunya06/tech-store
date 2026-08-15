@@ -19,7 +19,7 @@ export const assets = {
 
 
 export const categoriesData = [
-    { slug: "smartphones", name: "Smartphones", image: phone, desc: "Latest mobile powerhouses" },
+    { slug: "phones", name: "Smartphones", image: phone, desc: "Latest mobile powerhouses" },
     { slug: "laptops", name: "Laptops", image: laptops, desc: "Performance for every workflow" },
     { slug: "accessories", name: "Accessories", image: watch, desc: "Enhance your tech experience" },
     { slug: "gaming", name: "Gaming", image: controller, desc: "Gear for next-level play" },
