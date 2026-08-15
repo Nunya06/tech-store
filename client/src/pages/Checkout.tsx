@@ -109,29 +109,29 @@ const Checkout = () => {
 
     return (
         <div className="min-h-screen bg-app-cream">
-            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
                 {/* Back Button */}
-                <button onClick={() => navigate(-1)} className="flex items-center gap-2 text-sm text-app-text-light hover:text-app-orange-dark mb-6 transition-colors">
+                <button onClick={() => navigate(-1)} className="flex items-center gap-2 text-xs sm:text-sm text-app-text-light hover:text-app-orange-dark mb-6 transition-colors">
                     <ArrowLeft className="size-4" /> Back
                 </button>
 
-                <h1 className="text-2xl font-semibold text-app-orange mb-8">Checkout</h1>
+                <h1 className="text-xl sm:text-2xl font-semibold text-app-orange mb-6 sm:mb-8">Checkout</h1>
 
                 {/* Steps */}
-                <div className="flex items-center gap-2 mb-8">
+                <div className="flex items-center gap-1 sm:gap-2 mb-6 sm:mb-8 overflow-x-auto pb-2">
                     {steps.map((s, i) => (
-                        <div key={s.key} className="flex items-center gap-2">
-                            <button onClick={() => setStep(s.key)} className={`flex items-center gap-1 px-2 py-2 rounded-xl text-sm font-medium transition-colors ${step === s.key ? "bg-app-orange-dark text-white" : "bg-white text-app-text-light"}`}>
-                                <s.icon className="size-4" /> {s.label}
-                                {i < steps.length - 1 && <ChevronRightIcon className="size-4 text-app-text-light" />}
+                        <div key={s.key} className="flex items-center gap-1 sm:gap-2 shrink-0">
+                            <button onClick={() => setStep(s.key)} className={`flex items-center gap-1 px-2 sm:px-3 py-2 rounded-xl text-xs sm:text-sm font-medium transition-colors whitespace-nowrap ${step === s.key ? "bg-app-orange-dark text-white" : "bg-white text-app-text-light"}`}>
+                                <s.icon className="size-3 sm:size-4" /> <span className="hidden xs:inline">{s.label}</span>
+                                {i < steps.length - 1 && <ChevronRightIcon className="size-3 sm:size-4 text-app-text-light" />}
                             </button>
                         </div>
                     ))}
                 </div>
 
-                <div className="grid md:grid-cols-3 gap-6">
+                <div className="grid lg:grid-cols-3 gap-4 sm:gap-6">
                     {/* Main Form */}
-                    <div className="md:col-span-2">
+                    <div className="lg:col-span-2">
                         {step === "address" && <CheckoutAddress address={address} setAddress={setAddress} setStep={setStep} user={user} />}
 
                         {step === "payment" && <CheckoutPayment paymentMethod={paymentMethod} setPaymentMethod={setPaymentMethod} setStep={setStep} />}
@@ -140,10 +140,10 @@ const Checkout = () => {
                     </div>
 
                     {/* Order Summary Sidebar */}
-                    <div className="bg-white rounded-2xl p-5 h-fit sticky top-24">
-                        <h3 className="text-sm font-semibold text-app-orange mb-4">Order Summary</h3>
+                    <div className="bg-white rounded-2xl p-4 sm:p-5 lg:h-fit lg:sticky lg:top-24">
+                        <h3 className="text-xs sm:text-sm font-semibold text-app-orange mb-3 sm:mb-4">Order Summary</h3>
 
-                        <div className="space-y-2 text-sm">
+                        <div className="space-y-2 text-xs sm:text-sm">
                             <div className="flex justify-between">
                                 <span className="text-app-text-light">Subtotal ({cartQuantity} {cartQuantity === 1 ? "item" : "items"})</span>
                                 <span>
@@ -163,7 +163,7 @@ const Checkout = () => {
                                 </span>
                             </div>
 
-                            <div className="flex justify-between pt-3 border-t border-app-border text-base font-semibold">
+                            <div className="flex justify-between pt-3 border-t border-app-border text-sm sm:text-base font-semibold">
                                 <span>Total</span>
                                 <span className="text-app-orange">
                                     {formatCurrency(total, currency, 2)}

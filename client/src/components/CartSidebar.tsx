@@ -21,12 +21,12 @@ const CartSidebar = () => {
             <div onClick={() => setIsCartOpen(false)} className="fixed inset-0 bg-black/40 z-50 transition-opacity" />
 
             {/* Sidebar */}
-            <div className="fixed right-0 top-0 h-full w-full max-w-md bg-white z-50 shadow-2xl flex flex-col animate-slide-in-right">
+            <div className="fixed right-0 top-0 h-full w-full max-w-sm sm:max-w-md bg-white z-50 shadow-2xl flex flex-col animate-slide-in-right">
                 {/* Header */}
-                <div className="flex items-center justify-between p-5 border-b border-app-border">
-                    <div className="flex items-center gap-2">
-                        <ShoppingBagIcon className="size-5" />
-                        <h2 className="text-lg font-medium">Your Cart</h2>
+                <div className="flex items-center justify-between p-3 sm:p-5 border-b border-app-border">
+                    <div className="flex items-center gap-1 sm:gap-2">
+                        <ShoppingBagIcon className="size-4 sm:size-5" />
+                        <h2 className="text-base sm:text-lg font-medium">Your Cart</h2>
                         <span className="px-2 py-0.5 text-xs font-semibold bg-app-cream rounded-full">
                             {items.length} {items.length === 1 ? "item" : "items"}
                         </span>
@@ -37,7 +37,7 @@ const CartSidebar = () => {
                 </div>
 
                 {/* Items */}
-                <div className="flex-1 overflow-y-auto p-5 space-y-4">
+                <div className="flex-1 overflow-y-auto p-3 sm:p-5 space-y-3 sm:space-y-4">
                     {items.length === 0 ? (
                         <div className="flex flex-col items-center justify-center h-full text-center">
                             <ShoppingBagIcon className="size-16 text-app-border mb-4" />
@@ -80,22 +80,22 @@ const CartSidebar = () => {
                 </div>
                 {/* Footer */}
                 {items.length > 0 && (
-                    <div className="p-5 border-t border-app-border space-y-3">
-                        <div className="flex justify-between text-sm">
+                    <div className="p-3 sm:p-5 border-t border-app-border space-y-3">
+                        <div className="flex justify-between text-xs sm:text-sm">
                             <span className="text-app-text-light">Subtotal</span>
                             <span className="font-medium">
                                 {formatCurrency(cartTotal, currency, 2)}
                             </span>
                         </div>
 
-                        <div className="flex justify-between text-sm">
+                        <div className="flex justify-between text-xs sm:text-sm">
                             <span className="text-app-text-light">Delivery</span>
                             <span className="font-medium">{deliveryFee === 0 ? <span className="text-app-orange-dark">Free</span> : formatCurrency(deliveryFee, currency, 2)}</span>
                         </div>
 
                         {deliveryFee > 0 && <p className="text-xs text-app-text-light text-center">Free delivery on orders over {currency}20!</p>}
 
-                        <div className="flex justify-between text-base font-semibold border-t border-app-border pt-3">
+                        <div className="flex justify-between text-sm sm:text-base font-semibold border-t border-app-border pt-3">
                             <span>Total</span>
                             <span>
                                 {formatCurrency(grandTotal, currency, 2)}
@@ -108,7 +108,7 @@ const CartSidebar = () => {
                                 navigate("/checkout");
                                 window.scrollTo(0, 0);
                             }}
-                            className="w-full py-3 bg-app-orange-dark text-white font-semibold rounded-xl hover:bg-app-black transition-colors flex-center gap-2 active:scale-[0.98]"
+                            className="w-full py-2 sm:py-3 bg-app-orange-dark text-white text-sm sm:text-base font-semibold rounded-xl hover:bg-app-black transition-colors flex-center gap-2 active:scale-[0.98]"
                         >
                             Proceed to Checkout <ArrowRightIcon className="size-4" />
                         </button>

@@ -38,17 +38,17 @@ export default function AdminDashboard() {
     if (loading) return <Loading />;
 
     return (
-        <div className="space-y-6">
+        <div className="space-y-4 sm:space-y-6">
             {/* Stat Cards */}
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-4">
                 {cards.map((card) => (
-                    <div key={card.label} className="bg-white rounded-2xl p-5 border border-app-border flex justify-between gap-3">
-                        <div>
-                            <p className="text-2xl font-semibold text-zinc-900">{card.value}</p>
-                            <p className="text-sm text-app-text-light">{card.label}</p>
+                    <div key={card.label} className="bg-white rounded-2xl p-3 sm:p-5 border border-app-border flex flex-col sm:flex-row sm:justify-between gap-2 sm:gap-3">
+                        <div className="min-w-0">
+                            <p className="text-xl sm:text-2xl font-semibold text-zinc-900">{card.value}</p>
+                            <p className="text-xs sm:text-sm text-app-text-light truncate">{card.label}</p>
                         </div>
-                        <div className={`size-10 rounded-xl flex-center bg-orange-50 text-app-orange-dark`}>
-                            <card.icon className="size-5" />
+                        <div className={`size-9 sm:size-10 rounded-xl flex-center bg-orange-50 text-app-orange-dark shrink-0`}>
+                            <card.icon className="size-4 sm:size-5" />
                         </div>
                     </div>
                 ))}
@@ -56,28 +56,28 @@ export default function AdminDashboard() {
 
             {/* Recent Orders */}
             <div className="bg-white rounded-2xl border border-app-border overflow-hidden">
-                <div className="px-6 py-5 border-b border-app-border flex items-center justify-between">
-                    <h2 className="text-lg font-semibold text-zinc-900">Recent Orders</h2>
-                    <Link to="/admin/orders" className="text-sm font-medium text-app-orange hover:text-app-orange-dark transition-colors">
+                <div className="px-3 sm:px-6 py-3 sm:py-5 border-b border-app-border flex items-center justify-between gap-2">
+                    <h2 className="text-base sm:text-lg font-semibold text-zinc-900">Recent Orders</h2>
+                    <Link to="/admin/orders" className="text-xs sm:text-sm font-medium text-app-orange hover:text-app-orange-dark transition-colors whitespace-nowrap">
                         View All →
                     </Link>
                 </div>
                 <div className="overflow-x-auto">
-                    <table className="w-full text-left text-sm whitespace-nowrap">
+                    <table className="w-full text-left text-xs sm:text-sm whitespace-nowrap">
                         <thead className="bg-app-cream/50 text-zinc-500 uppercase text-xs font-semibold">
                             <tr>
-                                <th className="px-6 py-3">Order ID</th>
-                                <th className="px-6 py-3">Customer</th>
-                                <th className="px-6 py-3">Items</th>
-                                <th className="px-6 py-3">Total</th>
-                                <th className="px-6 py-3">Status</th>
-                                <th className="px-6 py-3">Date</th>
+                                <th className="px-2 sm:px-6 py-2 sm:py-3">Order ID</th>
+                                <th className="px-2 sm:px-6 py-2 sm:py-3">Customer</th>
+                                <th className="px-2 sm:px-6 py-2 sm:py-3">Items</th>
+                                <th className="px-2 sm:px-6 py-2 sm:py-3">Total</th>
+                                <th className="px-2 sm:px-6 py-2 sm:py-3">Status</th>
+                                <th className="px-2 sm:px-6 py-2 sm:py-3">Date</th>
                             </tr>
                         </thead>
                         <tbody className="divide-y divide-app-border">
                             {stats?.recentOrders.length === 0 ? (
                                 <tr>
-                                    <td colSpan={6} className="px-6 py-8 text-center text-zinc-500">
+                                    <td colSpan={6} className="px-3 sm:px-6 py-6 sm:py-8 text-center text-zinc-500">
                                         No orders yet.
                                     </td>
                                 </tr>

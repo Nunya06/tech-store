@@ -22,21 +22,21 @@ const PopularProducts = () => {
     const navigate = useNavigate()
 
     return (
-        <section className="pb-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-            <div className="max-w-7xl mx-auto ">
-                <div className="flex flex-col justify-center items-center mb-15">
-                    <h2 className="text-4xl font-medium mb-2">Popular Products</h2>
+        <section className="pb-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 md:py-16">
+            <div className="max-w-7xl mx-auto">
+                <div className="flex flex-col justify-center items-center mb-8 sm:mb-12 md:mb-16">
+                    <h2 className="text-2xl sm:text-3xl md:text-4xl font-medium mb-2">Popular Products</h2>
                     <p className="max-w-lg justify-center text-center text-sm text-app-text-light mt-1">Discover premium products at unbeatable prices curated for quality, comfort and style.</p>
                 </div>
 
-                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 xl:gap-8">
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4 lg:gap-6 xl:gap-8">
                     {products.slice(0,10).map((product) => (
                         <ProductCard key={product.id} product={product} />
                     ))}
                 </div>
 
-                <div className="flex justify-center mt-10">
-                    <button onClick={() => { window.scrollTo(0, 0); navigate('/products'); }} className="px-3 py-3 text-white bg-app-orange-dark font-semibold rounded-lg hover:bg-app-black transition-colors flex items-center gap-2">
+                <div className="flex justify-center mt-8 sm:mt-10 md:mt-12">
+                    <button onClick={() => { window.scrollTo(0, 0); navigate('/products'); }} className="px-4 sm:px-5 py-3 text-white bg-app-orange-dark font-semibold rounded-lg hover:bg-app-black transition-colors flex items-center gap-2 text-sm sm:text-base">
                         View All Products
                         <ArrowRightIcon className="size-4" />
                     </button>

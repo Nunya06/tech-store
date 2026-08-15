@@ -76,46 +76,46 @@ export default function AdminOrders() {
     return (
         <>
             <div className="bg-white rounded-2xl shadow-sm border border-app-border overflow-hidden">
-                <div className="px-6 py-5 border-b border-app-border">
-                    <h2 className="text-xl font-semibold text-zinc-900">Orders</h2>
+                <div className="px-3 sm:px-6 py-3 sm:py-5 border-b border-app-border">
+                    <h2 className="text-base sm:text-xl font-semibold text-zinc-900">Orders</h2>
                 </div>
                 <div className="overflow-x-auto">
-                    <table className="w-full text-left text-sm whitespace-nowrap">
+                    <table className="w-full text-left text-xs sm:text-sm whitespace-nowrap">
                         <thead className="bg-app-cream/50 text-zinc-500 uppercase text-xs font-semibold">
                             <tr>
-                                <th className="px-6 py-4">Order Details</th>
-                                <th className="px-6 py-4">Customer</th>
-                                <th className="px-6 py-4">Total</th>
-                                <th className="px-6 py-4">Delivery Partner</th>
-                                <th className="px-6 py-4">Status</th>
+                                <th className="px-2 sm:px-6 py-3 sm:py-4">Order Details</th>
+                                <th className="px-2 sm:px-6 py-3 sm:py-4">Customer</th>
+                                <th className="px-2 sm:px-6 py-3 sm:py-4">Total</th>
+                                <th className="px-2 sm:px-6 py-3 sm:py-4">Delivery Partner</th>
+                                <th className="px-2 sm:px-6 py-3 sm:py-4">Status</th>
                             </tr>
                         </thead>
                         <tbody className="divide-y divide-app-border">
                             {orders.length === 0 ? (
                                 <tr>
-                                    <td colSpan={5} className="px-6 py-8 text-center text-zinc-500">
+                                    <td colSpan={5} className="px-3 sm:px-6 py-6 sm:py-8 text-center text-zinc-500">
                                         No orders found.
                                     </td>
                                 </tr>
                             ) : (
                                 orders.map((order: any) => (
                                     <tr key={order.id} className="hover:bg-zinc-50/50 transition-colors">
-                                        <td className="px-6 py-4">
+                                        <td className="px-2 sm:px-6 py-3 sm:py-4">
                                             <p className="font-semibold text-zinc-900">#{order.id.slice(-6)}</p>
                                             <p className="text-xs text-zinc-500">{new Date(order.createdAt).toLocaleString()}</p>
                                         </td>
-                                        <td className="px-6 py-4">
-                                            <p className="font-medium text-zinc-900">{order.user?.name || "Unknown User"}</p>
-                                            <p className="text-xs text-zinc-500">{order.user?.email || "No email"}</p>
+                                        <td className="px-2 sm:px-6 py-3 sm:py-4">
+                                            <p className="font-medium text-zinc-900 text-xs sm:text-base">{order.user?.name || "Unknown User"}</p>
+                                            <p className="text-xs text-zinc-500 hidden sm:block">{order.user?.email || "No email"}</p>
                                         </td>
-                                        <td className="px-6 py-4 font-medium">
+                                        <td className="px-2 sm:px-6 py-3 sm:py-4 font-medium text-xs sm:text-base">
                                             {currency}
                                             {order.total.toFixed(2)}
                                         </td>
-                                        <td className="px-6 py-4">
+                                        <td className="px-2 sm:px-6 py-3 sm:py-4">
                                             {order.deliveryPartner ? (
-                                                <div className="flex items-center gap-2">
-                                                    <div className="size-6 rounded-full bg-app-orange flex-center">
+                                                <div className="flex items-center gap-1 sm:gap-2">
+                                                    <div className="size-5 sm:size-6 rounded-full bg-app-orange flex-center shrink-0">
                                                         <span className="text-white text-[10px] font-semibold">{order.deliveryPartner.name?.charAt(0)}</span>
                                                     </div>
                                                     <div>

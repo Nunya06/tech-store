@@ -68,10 +68,10 @@ const Products = () => {
     }, [category, organic, sort, page, minPrice, maxPrice]);
 
     return (
-        <div className="min-h-screen ">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <div className="min-h-screen">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
                 {/* Breadcrumb */}
-                <nav className="flex items-center gap-2 text-sm text-app-text-light mb-6">
+                <nav className="flex items-center gap-2 text-xs sm:text-sm text-app-text-light mb-4 sm:mb-6">
                     <Link to="/" className="hover:text-app-orange-dark transition-colors">
                         <Home className="size-4" />
                     </Link>
@@ -79,32 +79,32 @@ const Products = () => {
                     <span className="text-black font-medium">{activeCategory ? activeCategory.name : "All Products"}</span>
                 </nav>
 
-                <div className="flex gap-8 xl:gap-10">
+                <div className="flex gap-4 sm:gap-6 md:gap-8 lg:gap-10">
                     {/* Sidebar - Desktop */}
-                    <aside className="hidden lg:block w-64 shrink-0">
-                        <div className="bg-white rounded-2xl p-4 sticky top-24">
+                    <aside className="hidden lg:block w-56 xl:w-64 shrink-0">
+                        <div className="bg-white rounded-2xl p-3 sm:p-4 sticky top-24">
                             <FilterPanel categories={categoriesData} category={category} organic={organic} minPrice={minPrice} maxPrice={maxPrice} updateFilter={updateFilter} clearFilters={clearFilters} hasFilters={hasFilters} />
                         </div>
                     </aside>
 
                     {/* Main Content */}
-                    <main className="flex-1">
+                    <main className="flex-1 min-w-0">
                         {/* Header */}
-                        <div className="flex items-center justify-between mb-6">
-                            <div>
-                                <h1 className="text-2xl font-semibold text-black">{activeCategory ? activeCategory.name : "All Products"}</h1>
-                                <p className="text-sm text-app-text-light mt-0.5">{products.length} products found</p>
+                        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 sm:mb-6 gap-4 sm:gap-6">
+                            <div className="min-w-0">
+                                <h1 className="text-xl sm:text-2xl font-semibold text-black">{activeCategory ? activeCategory.name : "All Products"}</h1>
+                                <p className="text-xs sm:text-sm text-app-text-light mt-0.5">{products.length} products found</p>
                             </div>
 
-                            <div className="flex flex-col lg:items-center gap-3">
+                            <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 flex-wrap">
                                 {/* Mobile filter toggle */}
-                                <button onClick={() => setMobileFiltersOpen(true)} className="lg:hidden flex items-center gap-2 px-3 py-2 text-sm bg-white rounded-xl border border-app-border hover:bg-app-cream transition-colors">
+                                <button onClick={() => setMobileFiltersOpen(true)} className="lg:hidden flex items-center justify-center gap-2 px-3 py-2 text-xs sm:text-sm bg-white rounded-xl border border-app-border hover:bg-app-cream transition-colors">
                                     <SlidersHorizontal className="size-4" /> Filters
                                 </button>
 
                                 {/* Sort */}
-                                <div className="relative">
-                                    <select value={sort} onChange={(e) => updateFilter("sort", e.target.value)} className="appearance-none pl-3 pr-8 py-2 text-sm bg-white rounded-xl border border-app-border focus:border-app-orange-dark outline-none cursor-pointer">
+                                <div className="relative flex-1 sm:flex-initial">
+                                    <select value={sort} onChange={(e) => updateFilter("sort", e.target.value)} className="appearance-none w-full sm:w-auto pl-3 pr-8 py-2 text-xs sm:text-sm bg-white rounded-xl border border-app-border focus:border-app-orange-dark outline-none cursor-pointer">
                                         <option value="">Newest</option>
                                         <option value="price-low">Price: Low → High</option>
                                         <option value="price-high">Price: High → Low</option>
@@ -120,15 +120,15 @@ const Products = () => {
                         {loading ? (
                             <Loading />
                         ) : products.length === 0 ? (
-                            <div className="text-center py-16">
-                                <p className="text-lg font-semibold text-app-orange-dark mb-2">No products found</p>
-                                <p className="text-sm text-app-text-light mb-4">Try adjusting your filters or search terms</p>
-                                <button onClick={clearFilters} className="px-5 py-2 text-sm font-medium bg-app-orange-dark text-white rounded-xl hover:bg-app-orange-dark transition-colors">
+                            <div className="text-center py-12 sm:py-16">
+                                <p className="text-base sm:text-lg font-semibold text-app-orange-dark mb-2">No products found</p>
+                                <p className="text-xs sm:text-sm text-app-text-light mb-4">Try adjusting your filters or search terms</p>
+                                <button onClick={clearFilters} className="px-4 sm:px-5 py-2 text-xs sm:text-sm font-medium bg-app-orange-dark text-white rounded-xl hover:bg-app-orange-dark transition-colors">
                                     Clear Filters
                                 </button>
                             </div>
                         ) : (
-                            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 xl:gap-8">
+                            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-3 md:gap-4 lg:gap-6 xl:gap-8">
                                 {products.map((product) => product.stock > 0 &&
                                     <ProductCard key={product.id} product={product} />)}
                             </div>
@@ -136,7 +136,7 @@ const Products = () => {
 
                         {/* Pagination */}
                         {totalPages > 1 && (
-                            <div className="flex-center gap-2 mt-16">
+                            <div className="flex-center gap-1 sm:gap-2 mt-8 sm:mt-12 md:mt-16 overflow-x-auto pb-2">
                                 {Array.from({ length: totalPages }).map((_, i) => (
                                     <button
                                         key={i}
@@ -144,7 +144,7 @@ const Products = () => {
                                             updateFilter("page", String(i + 1));
                                             scrollTo(0, 0);
                                         }}
-                                        className={`size-9 rounded-lg text-sm font-medium transition-colors ${page === i + 1 ? "bg-app-orange-dark text-white" : "bg-white text-app-text-light hover:bg-app-cream"}`}
+                                        className={`size-8 sm:size-9 rounded-lg text-xs sm:text-sm font-medium transition-colors shrink-0 ${page === i + 1 ? "bg-app-orange-dark text-white" : "bg-white text-app-text-light hover:bg-app-cream"}`}
                                     >
                                         {i + 1}
                                     </button>

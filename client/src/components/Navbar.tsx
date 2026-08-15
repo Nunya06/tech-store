@@ -34,14 +34,14 @@ const Navbar = () => {
     return (
         <nav className="bg-white sticky top-0 z-50">
 
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16 gap-4">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16 gap-2 sm:gap-4">
                 <Link to="/" className="flex items-center gap-2 text-[22px] font-medium shrink-0">
                     <img src={assets.logo} alt="NexiCart Logo" className='h-25 w-auto' width={205} height={48} />
                 </Link>
 
 
                 {/* Desktop Menu */}
-                <div className="w-full flex items-center justify-end gap-4 lg:gap-10">
+                <div className="w-full flex items-center justify-end gap-2 sm:gap-4 lg:gap-8">
 
                     <div className="hidden md:flex items-center gap-6 text-sm text-zinc-600">
                         <Link to='/' >Home</Link>
@@ -51,7 +51,7 @@ const Navbar = () => {
                     </div>
 
                     {/* Search */}
-                    <form onSubmit={handleSearch} className="hidden sm:flex flex-1 max-w-sm text-xs sm:text-sm">
+                    <form onSubmit={handleSearch} className="hidden md:flex flex-1 max-w-xs lg:max-w-sm text-xs sm:text-sm">
                         <div className="relative w-full">
                             <SearchIcon className="absolute left-2.5 top-1/2 -translate-y-1/2 size-4 text-zinc-500 " />
                             <input type="text" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} placeholder="Search for device...." className="w-full pl-8 p-2 rounded-full ring focus:ring-app-warning/30" />
