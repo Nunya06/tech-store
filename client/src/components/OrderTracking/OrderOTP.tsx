@@ -4,7 +4,7 @@ export default function OrderOTP({ order }: { order: any }) {
     const showOtp = order.deliveryOtp && ["Assigned", "Packed", "Out for Delivery"].includes(order.status);
     if (!showOtp) return null;
     return (
-        <div className="bg-linear-to-r from-app-black to-app-orange-light rounded-2xl p-3 text-white">
+        <div className="bg-app-black rounded-2xl p-3 text-white">
             <div className="flex items-center gap-3 mb-3">
                 <div className="size-10 rounded-full bg-white/15 flex-center">
                     <KeyRoundIcon className="size-5" />
