@@ -7,7 +7,7 @@ import laptops from "./macbook_image.png";
 import phone from "./phone.png";
 import watch from "./watch.png";
 import controller from "./controller.png";
-import charger from "./charger.png";
+// import charger from "./charger.png";
 import hero_bg from "./main-bg.jpg";
 import loginImage from "./lg-image.jpg";
 
@@ -26,7 +26,7 @@ export const categoriesData = [
     { slug: "wearables", name: "Wearables", image: watch, desc: "Fitness and connectivity on the go" },
     { slug: "audio", name: "Audio", image: headphones, desc: "Immersive sound for life" },
     { slug: "gaming", name: "Gaming", image: controller, desc: "Gear for next-level play" },
-    { slug: "accessories", name: "Accessories", image: charger, desc: "Enhance your tech experience" },
+    // { slug: "accessories", name: "Accessories", image: charger, desc: "Enhance your tech experience" },
 ];
 
 export const heroSectionData = {
