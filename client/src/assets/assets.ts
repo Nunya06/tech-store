@@ -2,12 +2,10 @@ import { TruckIcon, LeafIcon, ClockIcon, ShieldCheckIcon, MapPinIcon, PhoneIcon,
 import { SiFacebook, SiX, SiInstagram } from "@icons-pack/react-simple-icons";
 import delivery_truck from "./delivery_truck.svg";
 import logo from "./logo.png";
-import headphones from "./bose_headphone_image.png";
 import laptops from "./macbook_image.png";
 import phone from "./phone.png";
 import watch from "./watch.png";
 import controller from "./controller.png";
-// import charger from "./charger.png";
 import hero_bg from "./main-bg.jpg";
 import loginImage from "./lg-image.jpg";
 
@@ -23,10 +21,8 @@ export const assets = {
 export const categoriesData = [
     { slug: "smartphones", name: "Smartphones", image: phone, desc: "Latest mobile powerhouses" },
     { slug: "laptops", name: "Laptops", image: laptops, desc: "Performance for every workflow" },
-    { slug: "wearables", name: "Wearables", image: watch, desc: "Fitness and connectivity on the go" },
-    { slug: "audio", name: "Audio", image: headphones, desc: "Immersive sound for life" },
+    { slug: "accessories", name: "Accessories", image: watch, desc: "Enhance your tech experience" },
     { slug: "gaming", name: "Gaming", image: controller, desc: "Gear for next-level play" },
-    // { slug: "accessories", name: "Accessories", image: charger, desc: "Enhance your tech experience" },
 ];
 
 export const heroSectionData = {
