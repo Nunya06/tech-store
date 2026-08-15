@@ -7,7 +7,7 @@ import laptops from "./macbook_image.png";
 import phone from "./phone.png";
 import watch from "./watch.png";
 import controller from "./controller.png";
-import charger from "./charger.png";
+// import charger from "./charger.png";
 import hero_bg from "./main-bg.jpg";
 import loginImage from "./lg-image.jpg";
 
