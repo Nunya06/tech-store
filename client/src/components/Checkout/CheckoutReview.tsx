@@ -14,7 +14,7 @@ export default function CheckoutReview({ address, items, handlePlaceOrder, loadi
 
     return (
         <div className="bg-white rounded-2xl p-6 animate-fade-in">
-            <h2 className="text-lg font-semibold text-app-orange mb-5 flex items-center gap-2">
+            <h2 className="text-lg font-semibold text-app-orange-dark mb-5 flex items-center gap-2">
                 <CheckIcon className="size-5" /> Review Your Order
             </h2>
 
@@ -46,7 +46,7 @@ export default function CheckoutReview({ address, items, handlePlaceOrder, loadi
                 ))}
             </div>
 
-            <button onClick={handlePlaceOrder} disabled={loading} className="w-full py-3 bg-app-orange text-white font-semibold rounded-xl hover:bg-app-orange-dark transition-colors disabled:opacity-60 active:scale-[0.98]">
+            <button onClick={handlePlaceOrder} disabled={loading} className="w-full py-3 bg-app-orange-dark text-white font-semibold rounded-xl hover:bg-app-black transition-colors disabled:opacity-60 active:scale-[0.98]">
                 {loading ? "Placing Order..." : `Place Order — ${currency}${total.toFixed(2)}`}
             </button>
         </div>
