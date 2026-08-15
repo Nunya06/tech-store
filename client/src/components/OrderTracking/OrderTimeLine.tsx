@@ -14,8 +14,8 @@ export default function OrderTimeLine({ order }: { order: any }) {
     };
 
     return (
-        <div className="bg-white rounded-2xl p-6">
-            <h2 className="text-lg font-semibold text-app-orange mb-6">Delivery Progress</h2>
+        <div className="bg-white rounded-2xl p-3">
+            <h2 className="text-lg font-semibold text-app-orange-dark mb-6">Delivery Progress</h2>
             <div className="space-y-0">
                 {allStatuses.map((status, i) => {
                     const Icon = statusIcons[status] || PackageIcon;
