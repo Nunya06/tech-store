@@ -141,7 +141,7 @@ export default function DeliveryDashboard() {
             {/* Tabs + Tracking toggle */}
             <div className="flex items-center gap-2 flex-wrap">
                 {(["active", "completed"] as const).map((t) => (
-                    <button key={t} onClick={() => setTab(t)} className={`px-4 py-2 text-sm font-medium rounded-xl transition-colors ${tab === t ? "bg-app-orange text-white" : "bg-white text-zinc-600 hover:bg-app-cream border border-app-border"}`}>
+                    <button key={t} onClick={() => setTab(t)} className={`px-4 py-2 text-sm font-medium rounded-xl transition-colors ${tab === t ? "bg-app-orange-dark text-white" : "bg-white text-zinc-600 hover:bg-app-cream border border-app-border"}`}>
                         {t === "active" ? "Active" : "Completed"}
                     </button>
                 ))}

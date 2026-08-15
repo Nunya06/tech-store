@@ -46,7 +46,7 @@ const Navbar = () => {
                     <div className="hidden md:flex items-center gap-6 text-sm text-zinc-600">
                         <Link to='/' >Home</Link>
                         <Link to='/products' >Products</Link>
-                        <Link to='/deals' className="text-app-warning" >Flash Sales</Link>
+                        <Link to='/deals' className="text-app-orange-dark" >Flash Sales</Link>
 
                     </div>
 
@@ -54,7 +54,7 @@ const Navbar = () => {
                     <form onSubmit={handleSearch} className="hidden md:flex flex-1 max-w-xs lg:max-w-sm text-xs sm:text-sm">
                         <div className="relative w-full">
                             <SearchIcon className="absolute left-2.5 top-1/2 -translate-y-1/2 size-4 text-zinc-500 " />
-                            <input type="text" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} placeholder="Search for device...." className="w-full pl-8 p-2 rounded-full ring focus:ring-app-warning/30" />
+                            <input type="text" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} placeholder="Search for device...." className="w-full pl-8 p-2 rounded-full ring focus:ring-app-orange-dark/30" />
                         </div>
                     </form>
 
@@ -122,7 +122,7 @@ const Navbar = () => {
 
                                             {user?.isAdmin && (
                                                 <Link to="/delivery" className="dropdown-link">
-                                                    <ShieldIcon className="text-app-orange-dark" size={16} />Delivery Partner{" "}
+                                                    <PackageIcon size={16} />Delivery Partner{" "}
                                                 </Link>
                                             )}
                                            
