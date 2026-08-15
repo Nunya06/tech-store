@@ -32,13 +32,13 @@ export default function AdminLayout() {
                 <aside className="w-full lg:w-64 shrink-0 h-fit bg-white rounded-2xl p-3 sm:p-4 border border-app-border">
                     <div className="pb-3 sm:pb-4 mb-3 sm:mb-4 border-b border-app-border">
                         <h2 className="text-base sm:text-lg font-semibold text-app-orange flex items-center gap-2 px-2">
-                            <ShieldIcon className="size-4 sm:size-5 text-app-orange-dark" /> <span className="hidden sm:inline">Admin Panel</span>
+                            <ShieldIcon className="size-4 sm:size-5 text-app-orange-dark" /> <span >Admin Panel</span>
                         </h2>
                     </div>
                     <nav className="flex flex-col gap-1 sm:gap-1.5">
                         {AdminLinkData.map((link) => (
                             <NavLink key={link.to} to={link.to} end={true} className={({ isActive }) => `flex items-center gap-2 sm:gap-3 p-2 sm:p-2.5 rounded-md text-xs sm:text-sm transition-colors ${isActive ? "bg-app-orange-dark text-white" : "text-app-text-light hover:bg-orange-50 hover:text-zinc-900"}`}>
-                                <link.icon className="size-4" /> <span className="hidden sm:inline">{link.label}</span>
+                                <link.icon className="size-4" /> <span >{link.label}</span>
                             </NavLink>
                         ))}
                     </nav>
