@@ -10,6 +10,7 @@ import hero_bg from "./main-bg.jpg";
 import loginImage from "./lg-image.jpg";
 import headphones from "./bose_headphone_image.png";
 import charger from "./charger.png";
+import { href } from "react-router-dom";
 
 export const assets = {
     delivery_truck,
@@ -80,9 +81,9 @@ export const footerData = {
     ],
 
     contact: [
-        { icon: MapPinIcon, text: "Ho-Fiave, Volta" },
+        { icon: MapPinIcon, text: "Ho-Fiave, Volta", href:'#' },
         { icon: PhoneIcon, text: "+233 545 327 593", href:'tel:+233545327593' },
-        { icon: MailIcon, text: "wisdomxorse928@gmail.com" },
+        { icon: MailIcon, text: "wisdomxorse928@gmail.com", href:'mailto:wisdomxorse928@gmail.com' },
     ],
 
     bottom: {
