@@ -8,7 +8,7 @@ const Newsletter = () => {
     
             const formData = new FormData(event.target as HTMLFormElement);
     
-            formData.append("access_key", "1be362cc-1384-458d-ba08-1d8176a93592");
+            formData.append("access_key", "206cc97a-ae7f-41be-aeea-3e424308703c");
     
             try {
                 const response = await fetch("https://api.web3forms.com/submit", {
