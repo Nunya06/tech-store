@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { assets } from "../assets/assets"
 import { Link } from "react-router-dom"
-import { Loader2Icon, LockIcon, MailIcon, UserIcon } from "lucide-react"
+import { EyeIcon, EyeOffIcon, Loader2Icon, LockIcon, MailIcon, UserIcon } from "lucide-react"
 import toast from "react-hot-toast";
 import { useAuth } from "../context/AuthContext"
 
@@ -12,10 +12,11 @@ const Login = () => {
     const [name, setName] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const [showPassword, setShowPassword] = useState(false)
     const [loading, setLoading] = useState(false)
 
 
-   const { login, register } = useAuth();
+    const { login, register } = useAuth();
 
     const handleSubmit = async (e: React.SubmitEvent) => {
         e.preventDefault();
@@ -83,7 +84,28 @@ const Login = () => {
                             <div className="relative">
 
                                 <LockIcon className="size-4 text-app-black/70 absolute left-3.5 top-1/2 -translate-y-1/2" />
-                                <input value={password} onChange={(e) => setPassword(e.target.value)} required type="password" placeholder="........" className="w-full pl-11 pr-4 py-3 border rounded-lg focus:outline-none focus:ring-1 focus:ring-app-orange-dark" />
+
+                                <input
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
+                                    required
+                                    type={showPassword ? "text" : "password"}
+                                    placeholder="........"
+                                    className="w-full pl-11 pr-11 py-3 border rounded-lg focus:outline-none focus:ring-1 focus:ring-app-orange-dark"
+                                />
+
+                                <button
+                                    type="button"
+                                    onClick={() => setShowPassword(!showPassword)}
+                                    className="absolute right-3.5 top-1/2 -translate-y-1/2 text-app-black/70 hover:text-app-black"
+                                >
+                                    {showPassword ? (
+                                        <EyeOffIcon className="size-4" />
+                                    ) : (
+                                        <EyeIcon className="size-4" />
+                                    )}
+                                </button>
+
                             </div>
                         </div>
 
