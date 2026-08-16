@@ -39,7 +39,7 @@ const ProductCard = ({ product }: Props) => {
                 {/* Price + Add */}
                 <div className="flex items-center justify-between">
                     <div className="flex items-center gap-1 truncate">
-                        <span className="text-base font-medium">
+                        <span className="text-sm font-medium">
                             {currency}
                             {product.price.toFixed(1)}
                         </span>
