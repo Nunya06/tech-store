@@ -21,7 +21,7 @@ export const assets = {
 
 
 export const categoriesData = [
-    { slug: "smartphones", name: "Smartphones", image: phone, desc: "Latest mobile powerhouses" },
+    { slug: "phones", name: "Smartphones", image: phone, desc: "Latest mobile powerhouses" },
     { slug: "laptops", name: "Laptops", image: laptops, desc: "Performance for every workflow" },
     { slug: "wearables", name: "Wearables", image: watch, desc: "Fitness and connectivity on the go" },
     { slug: "audio", name: "Audio", image: headphones, desc: "Immersive sound for life" },
