@@ -81,7 +81,7 @@ export const footerData = {
 
     contact: [
         { icon: MapPinIcon, text: "Ho-Fiave, Volta" },
-        { icon: PhoneIcon, text: "+233 545 327 593" },
+        { icon: PhoneIcon, text: "+233 545 327 593", href:'tel:+233545327593' },
         { icon: MailIcon, text: "wisdomxorse928@gmail.com" },
     ],
 
