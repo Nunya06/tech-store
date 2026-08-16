@@ -14,7 +14,7 @@ const HomeCategories = () => {
                 <section className="flex items-center justify-center px-0 py-5 sm:py-10 md:py-12">
                     <div className="flex flex-wrap items-stretch justify-center gap-2 sm:gap-2 md:gap-3">
                         {categoriesData.map((cat) => (
-                            <Link to={`/products?category=${cat.slug}`} onClick={() => window.scrollTo(0, 0)} key={cat.slug} className="transition-colors rounded-xl p-2 flex flex-col w-30 sm:w-30 md:w-35 lg:w-45 hover:scale-105">
+                            <Link to={`/products?category=${cat.slug}`} onClick={() => window.scrollTo(0, 0)} key={cat.slug} className="transition-colors rounded-xl p-1 flex flex-col w-40 sm:w-30 md:w-35 lg:w-45 hover:scale-105">
 
                                 {/* Product Image */}
                                 <div className="flex items-center justify-center h-30 sm:h-30 md:h-35 lg:h-45 mb-2 bg-app-cream rounded-xl">
