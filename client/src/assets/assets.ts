@@ -8,21 +8,25 @@ import watch from "./watch.png";
 import controller from "./controller.png";
 import hero_bg from "./main-bg.jpg";
 import loginImage from "./lg-image.jpg";
+import headphones from "./bose_headphone_image.png";
+import charger from "./charger.png";
 
 export const assets = {
     delivery_truck,
     hero_bg,
     logo,
-    loginImage
+    loginImage,
 };
 
 
 
 export const categoriesData = [
-    { slug: "phones", name: "Smartphones", image: phone, desc: "Latest mobile powerhouses" },
+    { slug: "smartphones", name: "Smartphones", image: phone, desc: "Latest mobile powerhouses" },
     { slug: "laptops", name: "Laptops", image: laptops, desc: "Performance for every workflow" },
-    { slug: "accessories", name: "Accessories", image: watch, desc: "Enhance your tech experience" },
+    { slug: "wearables", name: "Wearables", image: watch, desc: "Fitness and connectivity on the go" },
+    { slug: "audio", name: "Audio", image: headphones, desc: "Immersive sound for life" },
     { slug: "gaming", name: "Gaming", image: controller, desc: "Gear for next-level play" },
+    { slug: "accessories", name: "Accessories", image: charger, desc: "Enhance your tech experience" },
 ];
 
 export const heroSectionData = {
