@@ -10,7 +10,6 @@ import hero_bg from "./main-bg.jpg";
 import loginImage from "./lg-image.jpg";
 import headphones from "./bose_headphone_image.png";
 import charger from "./charger.png";
-import { href } from "react-router-dom";
 
 export const assets = {
     delivery_truck,
