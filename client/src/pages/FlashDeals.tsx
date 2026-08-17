@@ -20,7 +20,7 @@ const FlashDeals = () => {
   return (
     <div className="min-h-screen bg-app-cream">
       {/* Banner */}
-      <div className="bg-app-black py-8 sm:py-8 lg:py-15">
+      <div className="bg-app-orange-dark py-8 sm:py-8 lg:py-15">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col items-center justify-center text-center">
             <div className="inline-block bg-white/10 backdrop-blur-md rounded-full px-6 py-2 mb-6 shadow-sm">
@@ -31,7 +31,7 @@ const FlashDeals = () => {
               Lightning-Fast Savings
             </h1>
 
-            <p className="text-lg text-app-text-light max-w-2xl mx-auto">
+            <p className="text-lg text-app-white/50 max-w-2xl mx-auto">
               Limited-time offers on your favorite organic products. Grab them before they're gone!
             </p>
           </div>

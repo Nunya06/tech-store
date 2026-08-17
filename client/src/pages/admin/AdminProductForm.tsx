@@ -22,7 +22,7 @@ export default function AdminProductForm() {
         originalPrice: "",
         image: "",
         category: "",
-        unit: "",
+        flashdeal: "",
         stock: "",
         isOrganic: false,
     });
@@ -40,7 +40,7 @@ export default function AdminProductForm() {
                         originalPrice: p.originalPrice ? p.originalPrice.toString() : "",
                         image: p.image,
                         category: p.category,
-                        unit: p.unit,
+                        flashdeal: p.flashdeal,
                         stock: p.stock.toString(),
                         isOrganic: p.isOrganic,
                     });
@@ -160,13 +160,15 @@ export default function AdminProductForm() {
                                 />
                             </div>
                             <div>
-                                <label className="block text-sm font-medium text-zinc-700 mb-2">Unit</label>
+                                <label className="block text-sm font-medium text-zinc-700 mb-2">Flashdeal</label>
                                 <input
                                     required
-                                    type="text"
-                                    placeholder="e.g., kg, piece, liter"
-                                    value={formData.unit}
-                                    onChange={(e) => setFormData({ ...formData, unit: e.target.value })}
+                                    type="number"
+                                    min="0"
+                                    max="1"
+                                    placeholder="0 or 1"
+                                    value={formData.flashdeal}
+                                    onChange={(e) => setFormData({ ...formData, flashdeal: e.target.value })}
                                     className="w-full px-4 py-2.5 rounded-lg border border-zinc-200 focus:border-app-orange focus:ring-1 focus:ring-app-orange outline-none transition-all"
                                 />
                             </div>

@@ -37,12 +37,12 @@ export const createOrder = async (req: Request, res: Response) => {
             image: dbProduct.image,
             price: dbProduct.price,
             quantity: item.quantity,
-            unit: dbProduct.unit,
+            // unit: dbProduct.unit,
         };
     });
 
     const subtotal = orderItems.reduce((sum: number, item: any) => sum + item.price * item.quantity, 0);
-    const deliveryFee = subtotal < 5 ? 0 : 1.99;
+    const deliveryFee = subtotal < 5 ? 25.00 : 15.00;
     const tax = Math.round(subtotal * 0.01 * 100) / 100;
     const total = Math.round((subtotal + deliveryFee + tax) * 100) / 100;
 
@@ -70,7 +70,7 @@ export const createOrder = async (req: Request, res: Response) => {
             line_items: [
                 {
                     price_data: {
-                        currency: "usd",
+                        currency: "GH₵",
                         product_data: {
                             name: "Payment Technology",
                         },

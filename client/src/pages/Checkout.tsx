@@ -13,7 +13,7 @@ import { useAuth } from "../context/AuthContext";
 
 const Checkout = () => {
     const navigate = useNavigate();
-    const currency = import.meta.env.VITE_CURRENCY_SYMBOL || "$";
+    const currency = import.meta.env.VITE_CURRENCY_SYMBOL || "GH₵";
 
     const { items, cartQuantity, cartTotal, clearCart } = useCart();
     const { user } = useAuth();
@@ -35,8 +35,8 @@ const Checkout = () => {
 
     const [paymentMethod, setPaymentMethod] = useState("card");
 
-    const deliveryFee = cartTotal > 20 ? 0 : 1.99;
-    const tax = cartTotal * 0.03;
+    const deliveryFee = cartTotal  < 5 ? 25.00 : 15.00;
+    const tax = cartTotal * 0.01;
     const total = cartTotal + deliveryFee + tax;
 
     const steps: { key: string; label: string; icon: typeof MapPinIcon }[] = [

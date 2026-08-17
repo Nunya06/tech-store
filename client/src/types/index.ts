@@ -36,7 +36,7 @@ export interface Product {
     originalPrice: number;
     image: string;
     category: string;
-    unit: string;
+    // unit: string;
     stock: number;
     flashdeal: number;
     rating: number;
