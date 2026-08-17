@@ -7,15 +7,15 @@ import api from "../config/api";
 import toast from "react-hot-toast";
 
 const FlashDeals = () => {
-    const [products, setProducts] = useState<Product[]>([]);
-    const [loading, setLoading] = useState(true);
+  const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-        api.get("/products/flash-deals")
-            .then((res) => setProducts(res.data.products))
-            .catch((error: any) => toast.error(error.response.data.message || error?.message))
-            .finally(() => setLoading(false));
-    }, []);
+  useEffect(() => {
+    api.get("/products/flash-deals")
+      .then((res) => setProducts(res.data.products))
+      .catch((error: any) => toast.error(error.response.data.message || error?.message))
+      .finally(() => setLoading(false));
+  }, []);
 
   return (
     <div className="min-h-screen bg-app-cream">
@@ -37,7 +37,7 @@ const FlashDeals = () => {
           </div>
         </div>
       </div>
-      
+
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {loading ? (
@@ -45,14 +45,22 @@ const FlashDeals = () => {
         ) : products.length === 0 ? (
           <div className="text-center py-16">
             <Zap className="size-16 text-app-border mx-auto mb-4" />
-            <h2 className="text-lg font-semibold text-app-black mb-2">No deals right now</h2>
-            <p className="text-sm text-app-text-light">Check back soon for amazing offers!</p>
+            <h2 className="text-lg font-semibold text-app-black mb-2">
+              No deals right now
+            </h2>
+            <p className="text-sm text-app-text-light">
+              Check back soon for amazing offers!
+            </p>
           </div>
         ) : (
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-4">
-            {products.map((product) => product.flashdeal === 1 &&
-              <ProductCard key={product.id} product={product}
-              />)}</div>
+            {products.map((product) => (
+              <ProductCard
+                key={product.id}
+                product={product}
+              />
+            ))}
+          </div>
         )}
       </div>
     </div>
