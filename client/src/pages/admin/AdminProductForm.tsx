@@ -159,7 +159,7 @@ export default function AdminProductForm() {
                                     className="w-full px-4 py-2.5 rounded-lg border border-zinc-200 focus:border-app-orange focus:ring-1 focus:ring-app-orange outline-none transition-all"
                                 />
                             </div>
-                            <div>
+                            {/* <div>
                                 <label className="block text-sm font-medium text-zinc-700 mb-2">Unit</label>
                                 <input
                                     required
@@ -167,6 +167,18 @@ export default function AdminProductForm() {
                                     placeholder="e.g., kg, piece, liter"
                                     value={formData.unit}
                                     onChange={(e) => setFormData({ ...formData, unit: e.target.value })}
+                                    className="w-full px-4 py-2.5 rounded-lg border border-zinc-200 focus:border-app-orange focus:ring-1 focus:ring-app-orange outline-none transition-all"
+                                />
+                            </div> */}
+                            <div>
+                                <label className="block text-sm font-medium text-zinc-700 mb-2">Flashdeal</label>
+                                <input
+                                    required
+                                    type="number"
+                                    min="0"
+                                    max="1"
+                                    value={formData.stock}
+                                    onChange={(e) => setFormData({ ...formData, stock: e.target.value })}
                                     className="w-full px-4 py-2.5 rounded-lg border border-zinc-200 focus:border-app-orange focus:ring-1 focus:ring-app-orange outline-none transition-all"
                                 />
                             </div>
