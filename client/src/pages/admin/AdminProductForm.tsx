@@ -156,7 +156,7 @@ export default function AdminProductForm() {
                                     min="0"
                                     value={formData.originalPrice}
                                     onChange={(e) => setFormData({ ...formData, originalPrice: e.target.value })}
-                                    className="w-full px-4 py-2.5 rounded-lg border border-zinc-200 focus:border-app-orange focus:ring-1 focus:ring-app-orange outline-none transition-all"
+                                    className="w-full px-4 py-2.5 rounded-lg border border-zinc-200 focus:border-app-orange focus:ring-1 focus:ring-app-orange-dark outline-none transition-all"
                                 />
                             </div>
                             <div>
@@ -169,7 +169,7 @@ export default function AdminProductForm() {
                                     placeholder="0 or 1"
                                     value={formData.flashdeal}
                                     onChange={(e) => setFormData({ ...formData, flashdeal: e.target.value })}
-                                    className="w-full px-4 py-2.5 rounded-lg border border-zinc-200 focus:border-app-orange focus:ring-1 focus:ring-app-orange outline-none transition-all"
+                                    className="w-full px-4 py-2.5 rounded-lg border border-zinc-200 focus:border-app-orange-dark focus:ring-1 focus:ring-app-orange outline-none transition-all"
                                 />
                             </div>
                             <div>
