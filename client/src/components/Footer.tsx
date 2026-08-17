@@ -54,7 +54,7 @@ const Footer = () => {
                             {footerData.contact.map((item, i) => {
                                 const Icon = item.icon;
                                 return (
-                                    <a key={i} href={item.href} className="flex gap-3 text-sm text-app-black/70">
+                                    <a key={i} className="flex gap-3 text-sm text-app-black/70">
                                         <Icon className="size-4 text-app-black" /> {item.text}
                                     </a>
                                 );
