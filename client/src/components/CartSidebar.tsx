@@ -4,7 +4,7 @@ import { ArrowRightIcon, MinusIcon, PlusIcon, ShoppingBagIcon, Trash2Icon, XIcon
 import { formatCurrency } from "../utils/format";
 
 const CartSidebar = () => {
-    const currency = import.meta.env.VITE_CURRENCY_SYMBOL || "$";
+    const currency = import.meta.env.VITE_CURRENCY_SYMBOL || "GH₵";
 
     const { items, updateQuantity, removeFromCart, cartTotal, isCartOpen, setIsCartOpen } = useCart();
 
@@ -12,7 +12,7 @@ const CartSidebar = () => {
 
     if (!isCartOpen) return null;
 
-    const deliveryFee = cartTotal > 20 ? 0 : 1.99;
+    const deliveryFee = cartTotal > 500 ? 0 : 20.0;
     const grandTotal = cartTotal + deliveryFee;
 
     return (
@@ -93,7 +93,7 @@ const CartSidebar = () => {
                             <span className="font-medium">{deliveryFee === 0 ? <span className="text-app-orange-dark">Free</span> : formatCurrency(deliveryFee, currency, 2)}</span>
                         </div>
 
-                        {deliveryFee > 0 && <p className="text-xs text-app-text-light text-center">Free delivery on orders over {currency}20!</p>}
+                        {/* {deliveryFee > 0 && <p className="text-xs text-app-text-light text-center">Free delivery on orders over {currency}20!</p>} */}
 
                         <div className="flex justify-between text-sm sm:text-base font-semibold border-t border-app-border pt-3">
                             <span>Total</span>

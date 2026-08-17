@@ -12,6 +12,7 @@ import MyOrders from "./pages/MyOrders";
 import OrderTracking from "./pages/OrderTracking";
 import Addresses from "./pages/Addresses";
 import ProtectedRoute from "./components/ProtectedRoute";
+import ScrollToTop from "./components/ScrollToTop";
 import AdminLayout from "./pages/admin/AdminLayout";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import AdminProducts from "./pages/admin/AdminProducts";
@@ -26,6 +27,8 @@ const App = () => {
     return (
         <>
             <Toaster position="top-right" toastOptions={{ duration: 3000, style: { background: "#1B3022", color: "#fff", borderRadius: "12px", fontSize: "14px" } }} />
+
+             <ScrollToTop />
 
             <Routes>
                 {/* Auth pages - No Navbar/Footer */}
