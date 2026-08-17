@@ -61,13 +61,34 @@ export const getProduct = async (req: Request, res: Response) => {
 
 // POST /api/products
 export const createProduct = async (req: Request, res: Response) => {
-    const product = await prisma.product.create({ data: req.body });
+    const product = await prisma.product.create({
+        data: {
+            ...req.body,
+            price: Number(req.body.price),
+            originalPrice: Number(req.body.originalPrice),
+            flashdeal: Number(req.body.flashdeal),
+            stock: Number(req.body.stock),
+        },
+    });
+
     res.status(201).json({ product });
 };
 
 // PUT /api/products/:id
 export const updateProduct = async (req: Request, res: Response) => {
-    const product = await prisma.product.update({ where: { id: req.params.id as string }, data: req.body });
+    const product = await prisma.product.update({
+        where: {
+            id: req.params.id as string
+        },
+        data: {
+            ...req.body,
+            price: Number(req.body.price),
+            originalPrice: Number(req.body.originalPrice),
+            flashdeal: Number(req.body.flashdeal),
+            stock: Number(req.body.stock),
+        },
+    });
+
     res.json({ product });
 };
 
