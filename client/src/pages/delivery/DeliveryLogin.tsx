@@ -4,6 +4,7 @@ import { assets, heroSectionData } from "../../assets/assets";
 import { useNavigate } from "react-router-dom";
 import api from "../../config/api";
 import toast from "react-hot-toast";
+import { EyeIcon, EyeOffIcon, LockIcon, MailIcon,  } from "lucide-react"
 
 
 export default function DeliveryLogin() {
@@ -11,6 +12,7 @@ export default function DeliveryLogin() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [loading, setLoading] = useState(false);
+     const [showPassword, setShowPassword] = useState(false)
 
     const handleSubmit = async (e: React.SubmitEvent) => {
         e.preventDefault();
@@ -60,12 +62,41 @@ export default function DeliveryLogin() {
 
                     <form onSubmit={handleSubmit} className="bg-white rounded-2xl p-8 space-y-5">
                         <div>
-                            <label className="block text-sm font-medium text-app-orange mb-1.5">Email</label>
-                            <input type="email" required value={email} onChange={(e) => setEmail(e.target.value)} className="w-full px-4 py-2.5 rounded-xl border not-focus:border-app-border text-sm transition-colors" placeholder="partner@example.com" />
+                            <label className="block text-sm mb-1">Email</label>
+                            <div className="relative">
+
+                                <MailIcon className="size-4 text-app-black/70 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                                <input value={email} onChange={(e) => setEmail(e.target.value)} required type="email" placeholder="you@example.com" className="w-full pl-11 pr-4 py-3 border rounded-lg focus:outline-none focus:ring-1 focus:ring-app-orange-dark" />
+                            </div>
                         </div>
                         <div>
-                            <label className="block text-sm font-medium text-app-orange mb-1.5">Password</label>
-                            <input type="password" required value={password} onChange={(e) => setPassword(e.target.value)} className="w-full px-4 py-2.5 rounded-xl border not-focus:border-app-border text-sm transition-colors" placeholder="••••••••" />
+                            <label className="block text-sm mb-1">Password</label>
+                            <div className="relative">
+
+                                <LockIcon className="size-4 text-app-black/70 absolute left-3.5 top-1/2 -translate-y-1/2" />
+
+                                <input
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
+                                    required
+                                    type={showPassword ? "text" : "password"}
+                                    placeholder="........"
+                                    className="w-full pl-11 pr-11 py-3 border rounded-lg focus:outline-none focus:ring-1 focus:ring-app-orange-dark"
+                                />
+
+                                <button
+                                    type="button"
+                                    onClick={() => setShowPassword(!showPassword)}
+                                    className="absolute right-3.5 top-1/2 -translate-y-1/2 text-app-black/70 hover:text-app-black"
+                                >
+                                    {showPassword ? (
+                                        <EyeOffIcon className="size-4" />
+                                    ) : (
+                                        <EyeIcon className="size-4" />
+                                    )}
+                                </button>
+
+                            </div>
                         </div>
                         <button type="submit" disabled={loading} className="w-full py-3 bg-app-orange-dark hover:bg-app-black text-white font-semibold rounded-xl hover:bg-app-orange-light transition-colors disabled:opacity-60">
                             {loading ? "Signing in..." : "Sign In"}
