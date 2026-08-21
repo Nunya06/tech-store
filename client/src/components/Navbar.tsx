@@ -34,9 +34,9 @@ const Navbar = () => {
     return (
         <nav className="bg-white sticky top-0 z-50">
 
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16 gap-2 sm:gap-4">
+            <div className="max-w-7xl mx-auto px-0 flex items-center justify-between h-16 gap-2 sm:gap-4">
                 <Link to="/" className="flex items-center gap-2 text-[22px] font-medium shrink-0">
-                    <img src={assets.logo} alt="NexiCart Logo" className='h-25 w-auto' width={205} height={48} />
+                    <img src={assets.logo} alt="NexiCart Logo" className='h-24 w-auto' width={205} height={48} />
                 </Link>
 
 

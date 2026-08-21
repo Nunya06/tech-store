@@ -1,9 +1,14 @@
-import { Loader2Icon } from "lucide-react";
+
+import { assets } from "../assets/assets";
 
 const Loading = () => {
     return (
-        <div className="flex-center min-h-96 h-full w-full">
-            <Loader2Icon className="animate-spin size-8 text-green-950" />
+        <div className="min-h-screen w-full flex items-center justify-center">
+            <img
+                src={assets.logo}
+                alt="Loading..."
+                className="w-50 h-50 object-contain animate-pulse"
+            />
         </div>
     );
 };

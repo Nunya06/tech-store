@@ -4,11 +4,12 @@ import { assets, footerData } from "../assets/assets";
 const Footer = () => {
     return (
         <footer className="bg-app-cream/20 text-app-black">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 ">
+              
                 {/* - top -  */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                     {/* Brand */}
-                    <div className="-mt-10 mr-5">
+                    <div className="-mt-10 mr-5 -ml-2">
                         {/* Logo */}
                         <Link to="/" className="flex items-center gap-2 text-[22px] font-medium shrink-0 ">
                             <img src={assets.logo} alt="NexiCart Logo" className='h-25 w-auto' width={205} height={48} />
