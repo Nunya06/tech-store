@@ -24,7 +24,6 @@ export default function AdminProductForm() {
         category: "",
         flashdeal: "",
         stock: "",
-        isOrganic: false,
     });
 
     useEffect(() => {
@@ -42,7 +41,6 @@ export default function AdminProductForm() {
                         category: p.category,
                         flashdeal: p.flashdeal,
                         stock: p.stock.toString(),
-                        isOrganic: p.isOrganic,
                     });
                 }
             } catch (error: any) {

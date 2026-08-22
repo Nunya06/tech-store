@@ -1,7 +1,7 @@
 import express from "express";
 import auth from "../middleware/auth.js";
 import multer from "multer";
-import cloudinary from "../config/cloudinary.js";
+import { supabase } from "../config/supabase.js";
 
 const uploadRouter = express.Router();
 
@@ -14,15 +14,25 @@ uploadRouter.post("/", auth, upload.single("image"), async (req, res) => {
             return res.status(400).json({ message: "No image file provided" });
         }
 
-        const b64 = Buffer.from(req.file.buffer).toString("base64");
-        const dataURI = "data:" + req.file.mimetype + ";base64," + b64;
+        const fileName = `${Date.now()}-${req.file.originalname}`;
+        const filePath = `products/${fileName}`;
 
-        const result = await cloudinary.uploader.upload(dataURI, {
-            folder: "grocery-del",
-            resource_type: "auto",
-        });
+        const { data, error } = await supabase.storage
+            .from("product-images")
+            .upload(filePath, req.file.buffer, {
+                contentType: req.file.mimetype,
+                upsert: true,
+            });
 
-        res.json({ url: result.secure_url });
+        if (error) {
+            throw error;
+        }
+
+        const { data: { publicUrl } } = supabase.storage
+            .from("product-images")
+            .getPublicUrl(filePath);
+
+        res.json({ url: publicUrl });
     } catch (error: any) {
         res.status(500).json({ message: error.message });
     }

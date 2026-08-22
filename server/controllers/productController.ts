@@ -17,8 +17,8 @@ export const getFlashDeals = async (req: Request, res: Response) => {
         const discount =
             p.originalPrice && p.price
                 ? Math.round(
-                      ((p.originalPrice - p.price) / p.originalPrice) * 100
-                  )
+                    ((p.originalPrice - p.price) / p.originalPrice) * 100
+                )
                 : 0;
 
         return { ...p, discount };
@@ -74,9 +74,10 @@ export const getProduct = async (req: Request, res: Response) => {
 
 // POST /api/products
 export const createProduct = async (req: Request, res: Response) => {
+    const { isOrganic, ...productData } = req.body;
     const product = await prisma.product.create({
         data: {
-            ...req.body,
+            ...productData,
             price: Number(req.body.price),
             originalPrice: Number(req.body.originalPrice),
             flashdeal: Number(req.body.flashdeal),
@@ -89,12 +90,13 @@ export const createProduct = async (req: Request, res: Response) => {
 
 // PUT /api/products/:id
 export const updateProduct = async (req: Request, res: Response) => {
+    const { isOrganic, ...productData } = req.body;
     const product = await prisma.product.update({
         where: {
             id: req.params.id as string
         },
         data: {
-            ...req.body,
+            ...productData,
             price: Number(req.body.price),
             originalPrice: Number(req.body.originalPrice),
             flashdeal: Number(req.body.flashdeal),
