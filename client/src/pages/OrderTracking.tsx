@@ -9,7 +9,7 @@ import OrderTimeLine from "../components/OrderTracking/OrderTimeLine";
 import api from "../config/api";
 
 const OrderTracking = () => {
-    const currency = import.meta.env.VITE_CURRENCY_SYMBOL || "GH₵";
+    const currency = import.meta.env.VITE_CURRENCY_SYMBOL || "GHS";
     const { id } = useParams();
     const navigate = useNavigate();
     const [order, setOrder] = useState<Order | null>(null);
@@ -40,7 +40,7 @@ const OrderTracking = () => {
                 if (data.status && data.status !== order.status) {
                     setOrder((prev) => (prev ? { ...prev, status: data.status } : prev));
                 }
-            } catch {}
+            } catch { }
         };
         fetchLocation();
         const interval = setInterval(fetchLocation, 10000);

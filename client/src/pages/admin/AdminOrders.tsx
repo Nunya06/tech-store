@@ -6,13 +6,15 @@ import Loading from "../../components/Loading";
 import api from "../../config/api";
 
 export default function AdminOrders() {
-    const currency = import.meta.env.VITE_CURRENCY_SYMBOL || "GH₵";
+    const currency = import.meta.env.VITE_CURRENCY_SYMBOL || "GHS";
 
     const [orders, setOrders] = useState<any[]>([]);
     const [partners, setPartners] = useState<DeliveryPartner[]>([]);
     const [loading, setLoading] = useState(true);
     const [assignModal, setAssignModal] = useState<string | null>(null);
     const [selectedPartner, setSelectedPartner] = useState("");
+    const [otpModal, setOtpModal] = useState<string | null>(null);
+    const [deliveryOtp, setDeliveryOtp] = useState("");
 
     const fetchOrders = async () => {
         try {
@@ -29,7 +31,7 @@ export default function AdminOrders() {
         try {
             const { data } = await api.get("/admin/delivery-partners");
             setPartners(data.partners.filter((p: DeliveryPartner) => p.isActive));
-        } catch {}
+        } catch { }
     };
 
     useEffect(() => {
@@ -38,9 +40,28 @@ export default function AdminOrders() {
     }, []);
 
     const handleStatusChange = async (id: string, newStatus: string) => {
+        if (newStatus === "Delivered") {
+            setOtpModal(id);
+            setDeliveryOtp("");
+            return;
+        }
+
         try {
             await api.put(`/orders/${id}/status`, { status: newStatus });
             toast.success("Order status updated");
+            fetchOrders();
+        } catch (error: any) {
+            toast.error(error.response?.data?.message || "Failed to update status");
+        }
+    };
+
+    const handleOtpSubmit = async () => {
+        if (!otpModal) return;
+        try {
+            await api.put(`/orders/${otpModal}/status`, { status: "Delivered", deliveryOtp });
+            toast.success("Order marked as delivered");
+            setOtpModal(null);
+            setDeliveryOtp("");
             fetchOrders();
         } catch (error: any) {
             toast.error(error.response?.data?.message || "Failed to update status");
@@ -69,6 +90,18 @@ export default function AdminOrders() {
         "Out for Delivery": "bg-purple-100 text-purple-800",
         Delivered: "bg-green-100 text-green-800",
         Cancelled: "bg-red-100 text-red-800",
+    };
+
+    const getAvailableStatuses = (currentStatus: string, hasDeliveryPartner: boolean) => {
+        if (currentStatus === "Delivered") {
+            return ["Delivered", "Cancelled"];
+        }
+        if (!hasDeliveryPartner) {
+            const statusOrder = ["Placed", "Confirmed", "Assigned", "Packed", "Out for Delivery", "Delivered"];
+            const maxIndex = statusOrder.indexOf("Assigned");
+            return statusOptions.filter((s) => statusOrder.indexOf(s) <= maxIndex);
+        }
+        return statusOptions;
     };
 
     if (loading) return <Loading />;
@@ -141,7 +174,7 @@ export default function AdminOrders() {
                                                 onChange={(e) => handleStatusChange(order.id, e.target.value)}
                                                 className={`px-3 py-1.5 rounded-lg text-xs font-semibold border-r-8 border-transparent outline-none cursor-pointer leading-tight ${statusColors[order.status] || "bg-zinc-100 text-zinc-800"}`}
                                             >
-                                                {statusOptions.map((s) => (
+                                                {getAvailableStatuses(order.status, !!order.deliveryPartner).map((s) => (
                                                     <option key={s} value={s}>
                                                         {s}
                                                     </option>
@@ -187,8 +220,37 @@ export default function AdminOrders() {
                                 <button onClick={() => setAssignModal(null)} className="flex-1 py-2.5 text-sm font-medium text-zinc-600 bg-zinc-100 rounded-xl hover:bg-zinc-200 transition-colors">
                                     Cancel
                                 </button>
-                                <button onClick={handleAssign} disabled={!selectedPartner} className="flex-1 py-2.5 text-sm font-medium text-white bg-app-orange rounded-xl hover:bg-app-orange-light transition-colors disabled:opacity-50">
+                                <button onClick={handleAssign} disabled={!selectedPartner} className="flex-1 py-2.5 text-sm font-medium text-white bg-app-orange-dark rounded-xl hover:bg-app-black transition-colors disabled:opacity-50">
                                     Assign
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </>
+            )}
+
+            {/* Delivery OTP Modal */}
+            {otpModal && (
+                <>
+                    <div className="fixed inset-0 bg-app-cream/80 backdrop-blur z-50" onClick={() => setOtpModal(null)} />
+                    <div className="fixed inset-0 z-50 flex-center p-4">
+                        <div className="bg-white rounded-2xl p-6 w-full max-w-sm animate-fade-in">
+                            <h3 className="text-lg font-semibold text-app-orange mb-4">Enter Delivery OTP</h3>
+                            <p className="text-sm text-zinc-600 mb-4">Please enter the delivery OTP provided by the customer to mark this order as delivered.</p>
+                            <input
+                                type="text"
+                                value={deliveryOtp}
+                                onChange={(e) => setDeliveryOtp(e.target.value)}
+                                placeholder="Enter OTP"
+                                className="w-full px-4 py-2.5 text-sm rounded-xl border border-app-border focus:border-app-orange outline-none mb-5"
+                                maxLength={6}
+                            />
+                            <div className="flex gap-2">
+                                <button onClick={() => setOtpModal(null)} className="flex-1 py-2.5 text-sm font-medium text-zinc-600 bg-zinc-100 rounded-xl hover:bg-zinc-200 transition-colors">
+                                    Cancel
+                                </button>
+                                <button onClick={handleOtpSubmit} disabled={!deliveryOtp} className="flex-1 py-2.5 text-sm font-medium text-white bg-app-orange-dark rounded-xl hover:bg-app-black transition-colors disabled:opacity-50">
+                                    Confirm
                                 </button>
                             </div>
                         </div>

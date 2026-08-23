@@ -7,7 +7,7 @@ import api from "../../config/api";
 import toast from "react-hot-toast";
 
 export default function AdminProducts() {
-    const currency = import.meta.env.VITE_CURRENCY_SYMBOL || "GH₵";
+    const currency = import.meta.env.VITE_CURRENCY_SYMBOL || "GHS";
 
     const [products, setProducts] = useState<Product[]>([]);
     const [loading, setLoading] = useState(true);

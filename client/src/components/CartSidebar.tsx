@@ -4,7 +4,7 @@ import { ArrowRightIcon, MinusIcon, PlusIcon, ShoppingBagIcon, Trash2Icon, XIcon
 import { formatCurrency } from "../utils/format";
 
 const CartSidebar = () => {
-    const currency = import.meta.env.VITE_CURRENCY_SYMBOL || "GH₵";
+    const currency = import.meta.env.VITE_CURRENCY_SYMBOL || "GHS";
 
     const { items, updateQuantity, removeFromCart, cartTotal, isCartOpen, setIsCartOpen } = useCart();
 

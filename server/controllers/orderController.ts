@@ -70,7 +70,7 @@ export const createOrder = async (req: Request, res: Response) => {
             line_items: [
                 {
                     price_data: {
-                        currency: "GH₵",
+                        currency: "GHS",
                         product_data: {
                             name: "Payment Technology",
                         },
@@ -143,11 +143,35 @@ export const getOrder = async (req: Request, res: Response) => {
 // Update order status (admin)
 // PUT /api/orders/:id/status
 export const updateOrderStatus = async (req: Request, res: Response) => {
-    const { status, note } = req.body;
+    const { status, note, deliveryOtp } = req.body;
     const order = await prisma.order.findUnique({ where: { id: req.params.id as string } });
 
     if (!order) {
         return res.status(404).json({ message: "Order not found" });
+    }
+
+    // Require delivery OTP for "Delivered" status
+    if (status === "Delivered") {
+        if (!deliveryOtp) {
+            return res.status(400).json({ message: "Delivery OTP is required to mark order as delivered" });
+        }
+        if (order.deliveryOtp !== deliveryOtp) {
+            return res.status(400).json({ message: "Invalid delivery OTP" });
+        }
+    }
+
+    // Prevent reverting from "Delivered" to previous statuses (only allow "Cancelled")
+    if (order.status === "Delivered" && status !== "Cancelled" && status !== "Delivered") {
+        return res.status(400).json({ message: "Cannot change status from Delivered to previous statuses. Only Cancelled is allowed." });
+    }
+
+    // Prevent moving beyond "Assigned" if no delivery partner is assigned
+    const statusOrder = ["Placed", "Confirmed", "Assigned", "Packed", "Out for Delivery", "Delivered"];
+    const currentIndex = statusOrder.indexOf(order.status);
+    const newIndex = statusOrder.indexOf(status);
+
+    if (!order.deliveryPartnerId && newIndex > statusOrder.indexOf("Assigned")) {
+        return res.status(400).json({ message: "Cannot move status beyond Assigned without assigning a delivery partner" });
     }
 
     const history = (Array.isArray(order.statusHistory) ? order.statusHistory : []) as any[];
