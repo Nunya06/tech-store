@@ -34,7 +34,7 @@ export default function AdminFlashDeals() {
             toast.success("Product marked as out of stock");
             fetchProducts();
         } catch (error: any) {
-            toast.error(error.response?.data?.message || "Failed to update product");
+            toast.error(error.response?.data?.message || "Failed to update products");
         }
     };
 
@@ -63,7 +63,7 @@ export default function AdminFlashDeals() {
                             {products.length === 0 ? (
                                 <tr>
                                     <td colSpan={4} className="px-3 sm:px-6 py-6 sm:py-8 text-center text-zinc-500">
-                                        No products found.
+                                        No product found.
                                     </td>
                                 </tr>
                             ) : (
