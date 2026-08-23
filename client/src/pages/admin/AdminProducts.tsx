@@ -46,7 +46,7 @@ export default function AdminProducts() {
                 <div className="px-3 sm:px-6 py-3 sm:py-5 border-b border-app-border flex items-center justify-between gap-2 sm:gap-4 flex-wrap">
                     <h2 className="text-base sm:text-xl font-semibold text-zinc-900">Products</h2>
                     <Link to="/admin/products/new" className="flex items-center gap-1 sm:gap-2 px-3 sm:px-4 py-2 bg-app-orange-dark text-white rounded-xl hover:bg-app-black transition-colors font-medium text-xs sm:text-sm">
-                        <PlusIcon className="size-3 sm:size-4" /> <span className="hidden xs:inline">Add Product</span>
+                        <PlusIcon className="size-3 sm:size-4" /> <span className="xs:inline">Add Product</span>
                     </Link>
                 </div>
                 <div className="overflow-x-auto">

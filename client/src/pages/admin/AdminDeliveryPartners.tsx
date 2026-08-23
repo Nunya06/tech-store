@@ -60,7 +60,7 @@ export default function AdminDeliveryPartners() {
             <div className="flex items-center justify-between gap-3 flex-wrap">
                 <h1 className="text-base sm:text-xl font-semibold text-zinc-900">Delivery Partners</h1>
                 <button onClick={() => setShowForm(true)} className="px-3 sm:px-4 py-2 bg-app-orange-dark text-white text-xs sm:text-sm font-semibold rounded-xl hover:bg-app-black transition-colors flex items-center gap-1 sm:gap-2">
-                    <PlusIcon className="size-3 sm:size-4" /> <span className="hidden xs:inline">Add Partner</span>
+                    <PlusIcon className="size-3 sm:size-4" /> <span className="xs:inline">Add Partner</span>
                 </button>
             </div>
 
