@@ -27,10 +27,10 @@ export default function OrderTimeLine({ order }: { order: any }) {
                     return (
                         <div key={status} className="flex gap-4">
                             <div className="flex flex-col items-center">
-                                <div className={`size-9 rounded-full flex-center shrink-0 ${isCompleted ? "bg-app-orange text-white" : "bg-app-cream text-app-text-light"} ${isCurrent ? "ring-4 ring-app-orange/20" : ""}`}>
+                                <div className={`size-9 rounded-full flex-center shrink-0 ${isCompleted ? "bg-app-orange-dark text-white" : "bg-app-cream text-app-text-light"} ${isCurrent ? "ring-4 ring-app-orange/20" : ""}`}>
                                     <Icon className="size-4" />
                                 </div>
-                                {i < allStatuses.length - 1 && <div className={`w-0.5 h-12 ${i < currentIdx ? "bg-app-orange" : "bg-app-border"}`} />}
+                                {i < allStatuses.length - 1 && <div className={`w-0.5 h-12 ${i < currentIdx ? "bg-app-orange-dark" : "bg-app-border"}`} />}
                             </div>
                             <div className="pb-6">
                                 <p className={`text-sm font-semibold ${isCompleted ? "text-app-orange" : "text-app-text-light"}`}>{status}</p>
