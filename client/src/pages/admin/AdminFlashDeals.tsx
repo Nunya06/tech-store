@@ -6,7 +6,7 @@ import Loading from "../../components/Loading";
 import api from "../../config/api";
 import toast from "react-hot-toast";
 
-export default function AdminProducts() {
+export default function AdminFlashDeals() {
     const currency = import.meta.env.VITE_CURRENCY_SYMBOL || "GH₵";
 
     const [products, setProducts] = useState<Product[]>([]);
@@ -14,7 +14,7 @@ export default function AdminProducts() {
 
     const fetchProducts = async () => {
         try {
-            const { data } = await api.get("/products");
+            const { data } = await api.get("/products/flash-deals");
             setProducts(data.products);
         } catch (error: any) {
             toast.error(error.response?.data?.message || error?.message);
@@ -44,9 +44,9 @@ export default function AdminProducts() {
         <>
             <div className="bg-white rounded-2xl shadow-sm border border-app-border overflow-hidden">
                 <div className="px-3 sm:px-6 py-3 sm:py-5 border-b border-app-border flex items-center justify-between gap-2 sm:gap-4 flex-wrap">
-                    <h2 className="text-base sm:text-xl font-semibold text-zinc-900">Products</h2>
+                    <h2 className="text-base sm:text-xl font-semibold text-zinc-900">Flash Deals</h2>
                     <Link to="/admin/products/new" className="flex items-center gap-1 sm:gap-2 px-3 sm:px-4 py-2 bg-app-orange-dark text-white rounded-xl hover:bg-app-black transition-colors font-medium text-xs sm:text-sm">
-                        <PlusIcon className="size-3 sm:size-4" /> <span className="xs:inline">Add Product</span>
+                        <PlusIcon className="size-3 sm:size-4" /> <span className="xs:inline">Add Flash Deal</span>
                     </Link>
                 </div>
                 <div className="overflow-x-auto">

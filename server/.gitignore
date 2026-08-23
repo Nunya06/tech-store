@@ -1,8 +1,6 @@
 node_modules
-*.pdf
 .env
 .env.local
 .env.production
 .env.development
 uploads/
-dist/

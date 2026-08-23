@@ -4,11 +4,12 @@ import bcrypt from "bcrypt";
 
 // get admin dashboard data
 export const getAdminStats = async (req: Request, res: Response) => {
-    const [totalOrders, totalUsers, totalProducts, outOfStock, totalPartners, recentOrders] = await Promise.all([
+    const [totalOrders, totalUsers, totalProducts, outOfStock, flashDeals, totalPartners, recentOrders] = await Promise.all([
         prisma.order.count({ where: { NOT: [{ paymentMethod: "card", isPaid: false }] } }),
         prisma.user.count(),
         prisma.product.count(),
         prisma.product.count({ where: { stock: 0 } }),
+        prisma.product.count({ where: { flashdeal: 1, stock: { gt: 0 } } }),
         prisma.deliveryPartner.count(),
         prisma.order.findMany({
             where: { NOT: [{ paymentMethod: "card", isPaid: false }] },
@@ -20,7 +21,7 @@ export const getAdminStats = async (req: Request, res: Response) => {
             },
         }),
     ]);
-    res.json({ totalOrders, totalUsers, totalProducts, outOfStock, totalPartners, recentOrders });
+    res.json({ totalOrders, totalUsers, totalProducts, outOfStock, flashDeals, totalPartners, recentOrders });
 };
 
 // get delivery partners list for admin
