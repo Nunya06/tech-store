@@ -1,5 +1,5 @@
 import { Navigate, NavLink, Outlet } from "react-router-dom";
-import { PlusIcon, PackageSearchIcon, ShoppingBagIcon, LogOutIcon, BarChart3Icon, ShieldIcon, Truck, LayoutDashboardIcon, ZapIcon } from "lucide-react";
+import { PlusIcon, PackageSearchIcon, ShoppingBagIcon, LogOutIcon, ShieldIcon, Truck, LayoutDashboardIcon, ZapIcon } from "lucide-react";
 import { useAuth } from "../../context/AuthContext";
 
 export default function AdminLayout() {
