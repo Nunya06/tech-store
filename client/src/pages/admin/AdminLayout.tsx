@@ -1,21 +1,20 @@
 import { Navigate, NavLink, Outlet } from "react-router-dom";
-import { PlusIcon, PackageSearchIcon, ShoppingBagIcon, LogOutIcon, BarChart3Icon, ShieldIcon, Truck } from "lucide-react";
-import Navbar from "../../components/Navbar";
+import { PlusIcon, PackageSearchIcon, ShoppingBagIcon, LogOutIcon, BarChart3Icon, ShieldIcon, Truck, LayoutDashboardIcon, ZapIcon } from "lucide-react";
 import { useAuth } from "../../context/AuthContext";
 
 export default function AdminLayout() {
     const { user, loading } = useAuth();
 
     const AdminLinkData = [
-        { to: "/admin", label: "Dashboard", icon: BarChart3Icon },
+        { to: "/admin", label: "Dashboard", icon: LayoutDashboardIcon },
         { to: "/admin/products/new", label: "Add Product", icon: PlusIcon },
         { to: "/admin/products", label: "All Products", icon: PackageSearchIcon },
-        { to: "/admin/flash-deals", label: "Flash Deals", icon: PackageSearchIcon },
+        { to: "/admin/flash-deals", label: "Flash Deals", icon: ZapIcon },
         { to: "/admin/orders", label: "Orders", icon: ShoppingBagIcon },
         { to: "/admin/delivery-partners", label: "Delivery Partners", icon: Truck },
         { to: "/delivery", label: "Delivery Status", icon: Truck },
-        { to: "/", label: "Exit", icon: LogOutIcon },
     ];
+
     if (loading) {
         return <></>;
     }
@@ -24,28 +23,60 @@ export default function AdminLayout() {
     }
 
     return (
-        <div className="h-screen overflow-hidden">
-            <div className="max-lg:hidden">
-                <Navbar />
-            </div>
-            <div className="flex flex-col h-full lg:flex-row gap-4 sm:gap-6 lg:gap-8 max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-8 animate-fade-in">
-                {/* Admin Sidebar */}
-                <aside className="w-full lg:w-64 shrink-0 h-fit bg-white rounded-2xl p-3 sm:p-4 border border-app-border">
-                    <div className="pb-3 sm:pb-4 mb-3 sm:mb-4 border-b border-app-border">
-                        <h2 className="text-base sm:text-lg font-semibold text-app-orange flex items-center gap-2 px-2">
-                            <ShieldIcon className="size-4 sm:size-5 text-app-orange-dark" /> <span >Admin Panel</span>
-                        </h2>
+        <div className="min-h-screen bg-gray-50">
+            <div className="flex">
+                {/* Sidebar */}
+                <aside className="hidden lg:flex flex-col w-64 bg-white border-r border-gray-200 h-screen sticky top-0">
+                    {/* Logo/Brand */}
+                    <div className="p-6 border-b border-gray-200">
+                        <div className="flex items-center gap-3">
+                            <div className="size-10 rounded-xl bg-gradient-to-br from-app-orange to-app-orange-dark flex-center">
+                                <ShieldIcon className="size-6 text-white" />
+                            </div>
+                            <div>
+                                <h1 className="text-lg font-bold text-gray-900">Admin Panel</h1>
+                                <p className="text-xs text-gray-500">Management Dashboard</p>
+                            </div>
+                        </div>
                     </div>
-                    <nav className="flex flex-col gap-1 sm:gap-1.5">
+
+                    {/* Navigation */}
+                    <nav className="flex-1 p-4 space-y-1 overflow-y-auto">
                         {AdminLinkData.map((link) => (
-                            <NavLink key={link.to} to={link.to} end={true} className={({ isActive }) => `flex items-center gap-2 sm:gap-3 p-2 sm:p-2.5 rounded-md text-xs sm:text-sm transition-colors ${isActive ? "bg-app-orange-dark text-white" : "text-app-text-light hover:bg-orange-50 hover:text-zinc-900"}`}>
-                                <link.icon className="size-4" /> <span >{link.label}</span>
+                            <NavLink
+                                key={link.to}
+                                to={link.to}
+                                end
+                                className={({ isActive }) =>
+                                    `flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-all duration-200 ${isActive
+                                        ? "bg-gradient-to-r from-app-orange to-app-orange-dark text-white shadow-md"
+                                        : "text-gray-600 hover:bg-gray-100 hover:text-gray-900"
+                                    }`
+                                }
+                            >
+                                <link.icon className="size-5" />
+                                <span>{link.label}</span>
                             </NavLink>
                         ))}
                     </nav>
+
+                    {/* User Info & Logout */}
+                    <div className="p-4 border-t border-gray-200">
+                        <NavLink
+                            to="/"
+                            className="flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium text-red-600 hover:bg-red-50 transition-all duration-200"
+                        >
+                            <LogOutIcon className="size-5" />
+                            <span>Exit Admin</span>
+                        </NavLink>
+                    </div>
                 </aside>
-                <main className="flex-1 overflow-y-auto no-scrollbar pb-20">
-                    <Outlet />
+
+                {/* Main Content */}
+                <main className="flex-1 overflow-auto">
+                    <div className="p-6 lg:p-8">
+                        <Outlet />
+                    </div>
                 </main>
             </div>
         </div>
