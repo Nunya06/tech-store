@@ -207,12 +207,6 @@ export default function AdminProductForm() {
                                     className="w-full px-4 py-2.5 rounded-lg border border-zinc-200 focus:border-app-orange focus:ring-1 focus:ring-app-orange outline-none transition-all resize-none"
                                 />
                             </div>
-                            {/* <div className="flex items-center gap-3">
-                                <label htmlFor="isOrganic" className="text-sm font-medium text-zinc-700 cursor-pointer">
-                                    Organic
-                                </label>
-                                <input type="checkbox" id="isOrganic" checked={formData.isOrganic} onChange={(e) => setFormData({ ...formData, isOrganic: e.target.checked })} className="size-5 text-app-orange rounded border-zinc-300 focus:ring-app-orange cursor-pointer" />
-                            </div> */}
                         </div>
 
                         <div className="pt-6 border-t border-app-border flex justify-end">
